@@ -1,0 +1,46 @@
+body
+{
+    font-family: 'Poppins', sans-serif;
+}
+
+.carousel
+{
+    border: 1px;
+    border-style: solid;
+}
+
+#personalCard
+{
+    background-color: #ECECEC;
+}
+
+#btitle
+{
+    font-size: 110%;
+}
+
+#posts
+{
+    text-align: center;
+}
+
+@keyframes fade 
+{
+    0% {opacity: 0;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+.fade-in-1
+{
+    animation-name: fade;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.fade-in-4
+{
+    animation-name: fade;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+}
