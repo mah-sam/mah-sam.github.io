@@ -44,3 +44,13 @@ body
     animation-duration: 4s;
     animation-fill-mode: forwards;
 }
+
+.static {
+position:absolute;
+background: white;
+}
+  
+.static:hover {
+opacity:0;
+}
+
