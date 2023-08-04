@@ -29,6 +29,7 @@
 <!-- Loading font -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charter-webfont@4/charter.min.css" />
 
 <!-- Loading icons -->
 <script src="https://kit.fontawesome.com/8b71a44c69.js" crossorigin="anonymous"></script>
@@ -57,7 +58,7 @@
     <title>Home - Mahmoud Sameh</title>
 
     </head>
-    <body>
+    <body lang="en">
         <!-- Google Tag Manager (noscript) -->
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5JWKJPT"
             height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -119,7 +120,7 @@
             <div class="d-flex justify-content-center justify-content-md-start py-2 pt-3">
                 <h3><strong>Projects</strong></h3>
             </div>
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 pt-4">
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-3 g-3 pt-4">
                 
                     <div data-aos="fade-up">
                         <div class="col">
@@ -208,7 +209,7 @@
                                         
                                             <a href="https://bookshelf-ms.herokuapp.com" target=”_blank” class="btn btn-outline-primary">
                                                 <i class="fas fa-cog"></i>
-                                                Deployment
+                                                <!-- <span class="d-none d-md-block">Deployment</span> -->
                                             </a>
                                         
                                         
@@ -239,33 +240,49 @@
 
 
         <!-- Footer -->
-        <footer class="bg-dark text-center text-white pt-2">
-            <!-- Grid container -->
-            <div class="container p-4 pb-0">
-                <!-- Section: Social media -->
-                <section>
-                    <!-- Twitter -->
-                    <a class="btn btn-outline-light btn-floating m-2" target="_blank" href="https://twitter.com/mah_sam01" role="button">
-                        <i class="fab fa-twitter"></i>
-                    </a>
+        
 
-                    <!-- Linkedin -->
-                    <a class="btn btn-outline-light btn-floating m-2" target="_blank" href="https://linkedin.com/in/mahmoud-sameh-37560420b" role="button">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
+<!-- Footer -->
+<footer class="bg-dark text-center text-white pt-2">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+        <!-- Section: Social media -->
+        <section>
+            <!-- Twitter -->
+            <a class="btn btn-outline-light btn-floating m-2" target="_blank" href="https://twitter.com/mah_sam01" role="button">
+                <i class="fab fa-twitter"></i>
+            </a>
 
-                    <!-- Github -->
-                    <a class="btn btn-outline-light btn-floating m-2" target="_blank" href="https://github.com/mah-sam" role="button">
-                       <i class="fab fa-github"></i>
-                    </a>
-                </section>
-                <!-- Copyright -->
-                <div class="text-center pt-2">
-                    &#169; 2021 Copyright
-                    Mahmoud Sameh
-                </div>
-            </div>
-        </footer>
+            <!-- Linkedin -->
+            <a class="btn btn-outline-light btn-floating m-2" target="_blank" href="https://linkedin.com/in/mahmoud-sameh-37560420b" role="button">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+
+            <!-- Github -->
+            <a class="btn btn-outline-light btn-floating m-2" target="_blank" href="https://github.com/mah-sam" role="button">
+               <i class="fab fa-github"></i>
+            </a>
+        </section>
+        <!-- Copyright -->
+        <div class="text-center pt-2">
+            &#169; 2021-2023 Copyright
+            Mahmoud Sameh
+        </div>
+    </div>
+</footer>
+
+<!-- Styles for when after template processing is complete -->
+<style>
+    div > p {
+        text-align: justify;
+        text-justify: auto;
+    }
+</style>
+<!-- Animations load -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
         
         <!-- Styles for when after template processing is complete -->
         <style>

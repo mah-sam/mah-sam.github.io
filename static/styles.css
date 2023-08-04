@@ -54,3 +54,11 @@ background: white;
 opacity:0;
 }
 
+#post-content {
+    font-family: "Charter", sans-serif;
+}
+
+#post-content p {
+    font-family: "Charter", sans-serif;
+    font-size: 1.23rem;
+}

@@ -29,6 +29,7 @@
 <!-- Loading font -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charter-webfont@4/charter.min.css" />
 
 <!-- Loading icons -->
 <script src="https://kit.fontawesome.com/8b71a44c69.js" crossorigin="anonymous"></script>
@@ -56,17 +57,18 @@
 
     <title>My Works - Mahmoud Sameh</title>
 
+        <script src="/static/particles.js"></script>
+        <script src=" https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js "></script>
+        <script src="/static/app.js"></script>
     </head>
     <body>
-        <!-- Google Tag Manager (noscript) -->
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5JWKJPT"
-            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-        <!-- End Google Tag Manager (noscript) -->
-        
-        <!-- Navigation bar -->
-        <nav class= "navbar navbar-expand-md bg-dark navbar-dark">
-            <div class="container">
-                <a href="/" class="navbar-brand">Mahmoud Sameh</a>
+            <div id="particles-js" class="bg-image" style='background: linear-gradient(180deg, #120b2f 0%, #fbfbfb 100%); height:100vh; width: 100vw; position: absolute;'></div>
+            <div>
+                <section style="height:100vh; width: 100vw;">
+                    <!-- Navigation bar -->
+                    <nav class= "navbar navbar-expand-md navbar-dark" style="background-color: transparent;">
+                        <div class="container fade-in-1">
+                            <a href="/" class="navbar-brand">Mahmoud Sameh</a>
 
 <div class="collapse navbar-collapse" id="navmenu">
     <ul class="navbar-nav ml-auto text-center">
@@ -84,160 +86,178 @@
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navmenu">
     <span class="navbar-toggler-icon"></span>
 </button>
+                        </div>
+                    </nav>
+                    <!-- Projects -->
+                    <!-- <section style="height:93vh; width: 93vw;" class="py-5 align-middle text-center container">-->
+                    <div class="py-5 align-middle text-center container">
+                        <div class="row py-lg-5 mt-5">
+                            <div class="col-lg-6 col-md-8 mx-auto mt-5">
+                                <h1 class="fw-light text-light">My Works</h1>
+                                <p class="lead text-body-secondary text-light">Welcome to My portfolio! Here, 
+                                    you'll find a collection of diverse and innovative creations, 
+                                    showcasing my passion for creating and problem-solving.</p>
+                                <p class="text-center">
+                                    <a href="#projects_section" class="btn btn-outline-light my-2">View Projects</a>
+                                    <a href="/aboutme" class="btn btn-outline-light my-2">About Me</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
-        </nav>
+        </div>
+        <!--</section>-->
+        <!--<section class="electrics">-->
+        <div style='position: relative;'>
+            <section style="background-color: #fbfbfb;">
+                <div id="projects_section" class="container py-5">
+                    <div class="d-flex justify-content-center py-2 pt-1">
+                        <!--<h2><strong>Projects</strong></h2> -->
+                    </div>
+                    <!-- <div class="border-top border-3 border-dark"></div>-->
+                    <div class="row row-cols-2 row-cols-md-2 row-cols-lg-3 g-3 pt-4">
+                        
+                            <div data-aos="fade-up">
+                                <div class="col">
+                                    <div class="card shadow mb-4">
+                                        <img loading="lazy" class="card-img-top" src="/media/projects/iu_table.gif">
+                                        <div class="card-body">
+                                            <h5 class="card-title">IU Table</h5>
+                                            <p class="card-text" style="hyphens: auto;">A browser addon to reorganize the timetable of lectures on the Islamic University website according to days of the week</p>
+                                            <div class="d-flex justify-content-end">
+                                                
+                                                
+                                                
+                                                    <a href="https://github.com/mah-sam/IU-table" target=”_blank” class="btn btn-outline-primary ml-2">
+                                                        <i class="fab fa-github"></i>
+                                                        Repo
+                                                    </a>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div data-aos="fade-up">
+                                <div class="col">
+                                    <div class="card shadow mb-4">
+                                        <img loading="lazy" class="card-img-top" src="/media/projects/personal_site.jpg">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Personal Website</h5>
+                                            <p class="card-text" style="hyphens: auto;">Where I make myself public. Hosted on Github as a static. It is this site you are navigating right now.</p>
+                                            <div class="d-flex justify-content-end">
+                                                
+                                                
+                                                
+                                                    <a href="https://github.com/mah-sam/mah-sam.github.io" target=”_blank” class="btn btn-outline-primary ml-2">
+                                                        <i class="fab fa-github"></i>
+                                                        Repo
+                                                    </a>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div data-aos="fade-up">
+                                <div class="col">
+                                    <div class="card shadow mb-4">
+                                        <img loading="lazy" class="card-img-top" src="/media/projects/Screenshot_144.png">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Discord Read-Image Bot</h5>
+                                            <p class="card-text" style="hyphens: auto;">A Discord bot that reads text from the last sent image using tesseract</p>
+                                            <div class="d-flex justify-content-end">
+                                                
+                                                
+                                                
+                                                    <a href="https://github.com/mah-sam/read-image-bot" target=”_blank” class="btn btn-outline-primary ml-2">
+                                                        <i class="fab fa-github"></i>
+                                                        Repo
+                                                    </a>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div data-aos="fade-up">
+                                <div class="col">
+                                    <div class="card shadow mb-4">
+                                        <img loading="lazy" class="card-img-top" src="/media/projects/bs.gif">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Bookshelf</h5>
+                                            <p class="card-text" style="hyphens: auto;">My Harvard&#x27;s CS50x final project, a database that allows members to manage books in their personal shelves</p>
+                                            <div class="d-flex justify-content-end">
+                                                
+                                                    <a href="https://bookshelf-ms.herokuapp.com" target=”_blank” class="btn btn-outline-primary">
+                                                        <i class="fas fa-cog"></i>
+                                                        <!-- <span class="d-none d-md-block">Deployment</span> -->
+                                                    </a>
+                                                
+                                                
+                                                
+                                                    <a href="https://github.com/mah-sam/bookshelf-cs50x" target=”_blank” class="btn btn-outline-primary ml-2">
+                                                        <i class="fab fa-github"></i>
+                                                        Repo
+                                                    </a>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    </div>
 
-        
-    <!-- Projects -->
-    <section class="electrics">
-        <div class="container py-5">
-            <div class="d-flex justify-content-center justify-content-md-start py-2 pt-1">
-                <h3><strong>My Projects</strong></h3>
-            </div>
-            <div class="border-top border-3 border-primary"></div>
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 pt-4">
-                
-                    <div data-aos="fade-up">
-                        <div class="col">
-                            <div class="card shadow mb-4">
-                                <img class="card-img-top" src="/media/projects/iu_table.gif">
-                                <div class="card-body">
-                                    <h5 class="card-title">IU Table</h5>
-                                    <p class="card-text">A browser addon to reorganize the timetable of lectures on the Islamic University website according to days of the week</p>
-                                    <div class="d-flex justify-content-end">
-                                        
-                                        
-                                        
-                                            <a href="https://github.com/mah-sam/IU-table" target=”_blank” class="btn btn-outline-primary ml-2">
-                                                <i class="fab fa-github"></i>
-                                                Repo
-                                            </a>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div data-aos="fade-up">
-                        <div class="col">
-                            <div class="card shadow mb-4">
-                                <img class="card-img-top" src="/media/projects/personal_site.jpg">
-                                <div class="card-body">
-                                    <h5 class="card-title">Personal Website</h5>
-                                    <p class="card-text">Where I make myself public. Hosted on Github as a static. It is this site you are navigating right now.</p>
-                                    <div class="d-flex justify-content-end">
-                                        
-                                        
-                                        
-                                            <a href="https://github.com/mah-sam/mah-sam.github.io" target=”_blank” class="btn btn-outline-primary ml-2">
-                                                <i class="fab fa-github"></i>
-                                                Repo
-                                            </a>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div data-aos="fade-up">
-                        <div class="col">
-                            <div class="card shadow mb-4">
-                                <img class="card-img-top" src="/media/projects/Screenshot_144.png">
-                                <div class="card-body">
-                                    <h5 class="card-title">Discord Read-Image Bot</h5>
-                                    <p class="card-text">A Discord bot that reads text from the last sent image using tesseract</p>
-                                    <div class="d-flex justify-content-end">
-                                        
-                                        
-                                        
-                                            <a href="https://github.com/mah-sam/read-image-bot" target=”_blank” class="btn btn-outline-primary ml-2">
-                                                <i class="fab fa-github"></i>
-                                                Repo
-                                            </a>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div data-aos="fade-up">
-                        <div class="col">
-                            <div class="card shadow mb-4">
-                                <img class="card-img-top" src="/media/projects/bs.gif">
-                                <div class="card-body">
-                                    <h5 class="card-title">Bookshelf</h5>
-                                    <p class="card-text">My Harvard&#x27;s CS50x final project, a database that allows members to manage books in their personal shelves</p>
-                                    <div class="d-flex justify-content-end">
-                                        
-                                            <a href="https://bookshelf-ms.herokuapp.com" target=”_blank” class="btn btn-outline-primary">
-                                                <i class="fas fa-cog"></i>
-                                                Deployment
-                                            </a>
-                                        
-                                        
-                                        
-                                            <a href="https://github.com/mah-sam/bookshelf-cs50x" target=”_blank” class="btn btn-outline-primary ml-2">
-                                                <i class="fab fa-github"></i>
-                                                Repo
-                                            </a>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                
-            </div>
 
+                    
+                </div>
+            </section>
 
             
-        </div>
-    </section>
-
-
-        <!-- Footer -->
-        <footer class="bg-dark text-center text-white pt-2">
-            <!-- Grid container -->
-            <div class="container p-4 pb-0">
-                <!-- Section: Social media -->
-                <section>
-                    <!-- Twitter -->
-                    <a class="btn btn-outline-light btn-floating m-2" target="_blank" href="https://twitter.com/mah_sam01" role="button">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-
-                    <!-- Linkedin -->
-                    <a class="btn btn-outline-light btn-floating m-2" target="_blank" href="https://linkedin.com/in/mahmoud-sameh-37560420b" role="button">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-
-                    <!-- Github -->
-                    <a class="btn btn-outline-light btn-floating m-2" target="_blank" href="https://github.com/mah-sam" role="button">
-                       <i class="fab fa-github"></i>
-                    </a>
-                </section>
-                <!-- Copyright -->
-                <div class="text-center pt-2">
-                    &#169; 2021 Copyright
-                    Mahmoud Sameh
+            <footer class="text-center text-white pt-2 py-4" style="background: linear-gradient(0deg, #120b2f 0%, #fbfbfb 100%);">
+                <!-- Grid container -->
+                <div class="container p-4 pb-0">
+                    <!-- Section: Social media -->
+                    <section>
+                        <!-- Twitter -->
+                        <a class="btn btn-outline-light btn-floating m-2" target="_blank" href="https://twitter.com/mah_sam01" role="button">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+            
+                        <!-- Linkedin -->
+                        <a class="btn btn-outline-light btn-floating m-2" target="_blank" href="https://linkedin.com/in/mahmoud-sameh-37560420b" role="button">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+            
+                        <!-- Github -->
+                        <a class="btn btn-outline-light btn-floating m-2" target="_blank" href="https://github.com/mah-sam" role="button">
+                           <i class="fab fa-github"></i>
+                        </a>
+                    </section>
+                    <!-- Copyright -->
+                    <div class="text-center pt-2">
+                        &#169; 2021-2023 Copyright
+                        Mahmoud Sameh
+                    </div>
                 </div>
-            </div>
-        </footer>
-        
-        <!-- Styles for when after template processing is complete -->
-        <style>
-            div > p {
-                text-align: justify;
-                text-justify: auto;
-            }
-        </style>
-        <!-- Animations load -->
-        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-        <script>
-          AOS.init();
-        </script>
+            </footer>
+            
+            <!-- Styles for when after template processing is complete -->
+            <style>
+                div > p {
+                    text-align: justify;
+                    text-justify: auto;
+                }
+            </style>
+            <!-- Animations load -->
+            <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+            <script>
+              AOS.init();
+            </script>
     </body>
 </html>
