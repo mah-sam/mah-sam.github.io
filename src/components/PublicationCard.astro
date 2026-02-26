@@ -1,0 +1,71 @@
+---
+import { formatDate } from '../lib/utils';
+
+interface Props {
+  title: string;
+  authors: string[];
+  venue: string;
+  date: Date;
+  doi?: string;
+  pdf?: string;
+  abstract?: string;
+  tags?: string[];
+}
+
+const { title, authors, venue, date, doi, pdf, abstract, tags = [] } = Astro.props;
+---
+
+<div class="glass-card p-4 sm:p-6">
+  <div class="flex items-center gap-2 sm:gap-3 text-[0.65rem] sm:text-xs text-[var(--color-text-muted)] mb-2 sm:mb-3 font-mono">
+    <time datetime={date.toISOString()}>
+      {formatDate(date)}
+    </time>
+    <span>·</span>
+    <span>{venue}</span>
+  </div>
+
+  <h3 class="text-base sm:text-lg font-semibold mb-1.5 sm:mb-2">{title}</h3>
+
+  <p class="text-xs sm:text-sm text-[var(--color-text-secondary)] mb-2 sm:mb-3">
+    {authors.join(', ')}
+  </p>
+
+  {abstract && (
+    <p class="text-xs sm:text-sm text-[var(--color-text-secondary)] leading-relaxed mb-3 sm:mb-4 line-clamp-3">
+      {abstract}
+    </p>
+  )}
+
+  {tags.length > 0 && (
+    <div class="flex flex-wrap gap-1.5 mb-3 sm:mb-4">
+      {tags.map((tag) => (
+        <span class="tech-badge text-[0.65rem] sm:text-xs">{tag}</span>
+      ))}
+    </div>
+  )}
+
+  <div class="flex items-center gap-3">
+    {doi && (
+      <a
+        href={`https://doi.org/${doi}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1.5 text-xs sm:text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-accent-blue)] transition-colors font-mono"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        DOI
+      </a>
+    )}
+    {pdf && (
+      <a
+        href={pdf}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1.5 text-xs sm:text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-accent-blue)] transition-colors font-mono"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><polyline points="14 2 14 8 20 8"/></svg>
+        PDF
+      </a>
+    )}
+  </div>
+</div>

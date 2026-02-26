@@ -1,0 +1,75 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { formatDate, getReadingTime } from '../lib/utils';
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  tags?: string[];
+  image?: string;
+  content: string;
+}
+
+const { title, description, date, tags = [], image, content } = Astro.props;
+const readingTime = getReadingTime(content);
+---
+
+<BaseLayout title={title} description={description} image={image}>
+  <Nav />
+  <main class="pt-20 sm:pt-24 pb-12 sm:pb-16">
+    <article class="max-w-3xl mx-auto px-4 sm:px-6">
+      <!-- Header -->
+      <header class="mb-8 sm:mb-12">
+        <div class="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-[var(--color-text-muted)] mb-3 sm:mb-4">
+          <time datetime={date.toISOString()} class="font-mono">
+            {formatDate(date)}
+          </time>
+          <span>·</span>
+          <span>{readingTime}</span>
+        </div>
+        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight mb-3 sm:mb-4">
+          {title}
+        </h1>
+        <p class="text-base sm:text-lg text-[var(--color-text-secondary)]">
+          {description}
+        </p>
+        {tags.length > 0 && (
+          <div class="flex flex-wrap gap-1.5 sm:gap-2 mt-4 sm:mt-6">
+            {tags.map((tag) => (
+              <span class="tech-badge text-[0.65rem] sm:text-xs">{tag}</span>
+            ))}
+          </div>
+        )}
+      </header>
+
+      {image && (
+        <img
+          src={image}
+          alt={title}
+          class="w-full rounded-lg mb-8 sm:mb-12 border border-[var(--color-border)]"
+          loading="lazy"
+        />
+      )}
+
+      <!-- Content -->
+      <div class="prose text-sm sm:text-base">
+        <slot />
+      </div>
+
+      <!-- Back link -->
+      <div class="mt-10 sm:mt-16 pt-6 sm:pt-8 border-t border-[var(--color-border)]">
+        <a
+          href="/blog"
+          class="inline-flex items-center gap-2 text-[var(--color-text-secondary)] hover:text-[var(--color-accent-blue)] transition-colors font-mono text-xs sm:text-sm"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          Back to all posts
+        </a>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</BaseLayout>

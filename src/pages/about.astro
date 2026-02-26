@@ -1,0 +1,158 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { SITE } from '../lib/utils';
+
+const skills = {
+  'AI & Machine Learning': [
+    'Deep Learning', 'NLP', 'Computer Vision', 'LLMs',
+    'RAG Systems', 'AI Architecture', 'Model Deployment',
+  ],
+  'Engineering & Development': [
+    'Python', 'JavaScript', 'TypeScript', 'SQL',
+    'REST APIs', 'System Design', 'Git',
+  ],
+  'Tools & Platforms': [
+    'Docker', 'Cloud Services', 'Linux',
+    'CI/CD', 'Flask', 'Node.js',
+  ],
+};
+---
+
+<PageLayout title="About" description="Learn more about Mahmoud Sameh — AI Solution Engineer.">
+  <!-- Hero -->
+  <section class="pt-24 sm:pt-32 pb-10 sm:pb-16 px-4 sm:px-6 dot-grid relative">
+    <div class="hero-orb hero-orb-2" aria-hidden="true" style="top: -150px; right: -200px;"></div>
+    <div class="max-w-6xl mx-auto relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-12 items-center">
+        <!-- Photo -->
+        <div class="md:col-span-4 flex justify-center scroll-reveal">
+          <div class="relative">
+            <div class="w-36 h-36 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-2 border-[var(--color-border)] shadow-lg">
+              <img
+                src="/images/MS.jpg"
+                alt="Mahmoud Sameh"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="absolute -inset-2 rounded-full border border-[var(--color-accent-blue-dim)] -z-10"></div>
+          </div>
+        </div>
+
+        <!-- Intro -->
+        <div class="md:col-span-8 scroll-reveal text-center md:text-left">
+          <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">About Me</h1>
+          <p class="text-lg sm:text-xl gradient-text font-mono font-medium mb-4 sm:mb-6">
+            AI Solution Engineer
+          </p>
+          <div class="space-y-3 sm:space-y-4 text-sm sm:text-base text-[var(--color-text-secondary)] leading-relaxed">
+            <p>
+              I am an engineer with a deep passion for artificial intelligence and its real-world applications.
+              My work sits at the intersection of AI research and practical engineering — translating complex
+              theoretical concepts into solutions that deliver tangible value.
+            </p>
+            <p>
+              With a strong foundation in both software engineering and AI/ML, I design and build intelligent
+              systems that solve meaningful problems. I'm a lifelong learner who thrives on expanding my
+              skills across disciplines.
+            </p>
+            <p>
+              I believe in building in public, sharing knowledge, and growing through collaboration.
+              If you share similar interests, I'd love to connect.
+            </p>
+          </div>
+          <div class="flex flex-wrap justify-center md:justify-start gap-3 sm:gap-4 mt-6 sm:mt-8">
+            <a
+              href="/cv/Mahmoud_Sameh_CV_Comprehensive.pdf"
+              target="_blank"
+              class="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg bg-[var(--color-accent-blue)] text-white font-medium text-sm hover:opacity-90 transition-opacity"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download CV
+            </a>
+            <a
+              href={`mailto:${SITE.email}`}
+              class="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg border border-[var(--color-border)] text-[var(--color-text-primary)] font-medium text-sm hover:border-[var(--color-border-hover)] hover:bg-[var(--color-bg-card)] transition-all"
+            >
+              Get in Touch
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills & Expertise -->
+  <section class="py-12 sm:py-20 px-4 sm:px-6 border-t border-[var(--color-border)]">
+    <div class="max-w-6xl mx-auto">
+      <div class="scroll-reveal">
+        <SectionHeading
+          title="Skills & Expertise"
+          subtitle="Core competencies and technologies I work with."
+        />
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8">
+        {Object.entries(skills).map(([category, items]) => (
+          <div class="glass-card p-4 sm:p-6 scroll-reveal">
+            <h3 class="font-mono text-xs sm:text-sm text-[var(--color-accent-blue)] mb-3 sm:mb-4 uppercase tracking-wider">
+              {category}
+            </h3>
+            <div class="flex flex-wrap gap-1.5 sm:gap-2">
+              {items.map((skill) => (
+                <span class="tech-badge text-[0.65rem] sm:text-xs">{skill}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Education & Certifications -->
+  <section class="py-12 sm:py-20 px-4 sm:px-6 border-t border-[var(--color-border)]">
+    <div class="max-w-6xl mx-auto">
+      <div class="scroll-reveal">
+        <SectionHeading
+          title="Education & Certifications"
+          subtitle="Academic background and professional development."
+        />
+      </div>
+      <div class="space-y-4 sm:space-y-6">
+        <div class="glass-card p-4 sm:p-6 scroll-reveal">
+          <div class="flex items-start gap-3 sm:gap-4">
+            <div class="w-2 h-2 rounded-full bg-[var(--color-accent-blue)] mt-2 shrink-0"></div>
+            <div>
+              <h3 class="font-semibold text-base sm:text-lg">Harvard CS50x</h3>
+              <p class="text-xs sm:text-sm text-[var(--color-text-muted)] font-mono mb-1.5 sm:mb-2">Computer Science</p>
+              <p class="text-xs sm:text-sm text-[var(--color-text-secondary)]">
+                Completed Harvard's Introduction to Computer Science, covering algorithms,
+                data structures, web development, and software engineering principles.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card p-4 sm:p-6 scroll-reveal">
+          <div class="flex items-start gap-3 sm:gap-4">
+            <div class="w-2 h-2 rounded-full bg-[var(--color-accent-violet)] mt-2 shrink-0"></div>
+            <div>
+              <h3 class="font-semibold text-base sm:text-lg">Professional Certifications</h3>
+              <p class="text-xs sm:text-sm text-[var(--color-text-muted)] font-mono mb-1.5 sm:mb-2">Various</p>
+              <p class="text-xs sm:text-sm text-[var(--color-text-secondary)]">
+                Multiple certifications across AI, software engineering, and related fields.
+              </p>
+              <a
+                href="/cv/Mahmoud_Sameh_Certificates.pdf"
+                target="_blank"
+                class="inline-flex items-center gap-1.5 text-xs sm:text-sm text-[var(--color-accent-blue)] hover:underline mt-2 font-mono"
+              >
+                View certificates
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>

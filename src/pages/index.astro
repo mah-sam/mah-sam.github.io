@@ -1,0 +1,174 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Hero from '../components/Hero.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import PublicationCard from '../components/PublicationCard.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Timeline from '../components/Timeline.astro';
+import type { TimelineEntry } from '../components/Timeline.astro';
+import { getCollection } from 'astro:content';
+
+const allProjects = await getCollection('projects');
+const featuredProjects = allProjects
+  .filter((p) => p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
+
+let featuredPubs: any[] = [];
+try {
+  const allPubs = await getCollection('publications');
+  featuredPubs = allPubs
+    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+    .slice(0, 3);
+} catch {
+  // No publications yet
+}
+
+const careerTimeline: TimelineEntry[] = [
+  {
+    date: 'PRESENT',
+    title: 'AI Solution Engineer',
+    company: 'Building the future',
+    description: 'Designing and deploying AI-powered solutions — from LLM-based systems and RAG pipelines to end-to-end ML architectures that solve real business problems.',
+    tags: ['LLMs', 'RAG', 'System Design', 'Python'],
+    accent: 'blue',
+  },
+  {
+    date: '2024',
+    title: 'AI Research & Development',
+    company: 'Deep diving into AI',
+    description: 'Deepened expertise in NLP, computer vision, and generative AI. Built intelligent prototypes and contributed to AI research initiatives.',
+    tags: ['Deep Learning', 'NLP', 'Computer Vision', 'Research'],
+    accent: 'violet',
+  },
+  {
+    date: '2023',
+    title: 'Software Engineer',
+    company: 'Full-stack development',
+    description: 'Developed full-stack applications, browser extensions, and automation tools. Built a dynamic-to-static website publisher and various open-source tools.',
+    tags: ['JavaScript', 'Python', 'Flask', 'Git'],
+    accent: 'blue',
+  },
+  {
+    date: '2022',
+    title: 'CS50x & Foundations',
+    company: 'Harvard / Self-directed',
+    description: 'Completed Harvard\'s CS50x. Built foundational projects including a full-stack book management system and a Discord OCR bot.',
+    tags: ['C', 'Python', 'SQL', 'Algorithms'],
+    accent: 'violet',
+  },
+];
+---
+
+<PageLayout>
+  <Hero />
+
+  <!-- Featured Projects -->
+  <section class="py-12 sm:py-20 px-4 sm:px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="scroll-reveal">
+        <SectionHeading
+          title="Featured Projects"
+          subtitle="Selected work showcasing my engineering and problem-solving approach."
+        />
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        {featuredProjects.map((project) => (
+          <div class="scroll-reveal">
+            <ProjectCard
+              title={project.data.title}
+              description={project.data.description}
+              tags={project.data.tags}
+              image={project.data.image}
+              github={project.data.github}
+              live={project.data.live}
+            />
+          </div>
+        ))}
+      </div>
+      <div class="mt-6 sm:mt-8 text-right scroll-reveal">
+        <a
+          href="/projects"
+          class="inline-flex items-center gap-2 text-xs sm:text-sm font-mono text-[var(--color-text-secondary)] hover:text-[var(--color-accent-blue)] transition-colors"
+        >
+          View all projects
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Publications -->
+  <section class="py-12 sm:py-20 px-4 sm:px-6 border-t border-[var(--color-border)]">
+    <div class="max-w-6xl mx-auto">
+      <div class="scroll-reveal">
+        <SectionHeading
+          title="Publications"
+          subtitle="Research and academic contributions to the AI field."
+        />
+      </div>
+
+      {featuredPubs.length > 0 ? (
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          {featuredPubs.map((pub) => (
+            <div class="scroll-reveal">
+              <PublicationCard
+                title={pub.data.title}
+                authors={pub.data.authors}
+                venue={pub.data.venue}
+                date={pub.data.date}
+                doi={pub.data.doi}
+                pdf={pub.data.pdf}
+                abstract={pub.data.abstract}
+                tags={pub.data.tags}
+              />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="scroll-reveal">
+          <div class="glass-card p-5 sm:p-8 flex items-start sm:items-center gap-4 sm:gap-6 max-w-2xl">
+            <div class="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-[var(--color-accent-violet-dim)] flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-violet)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div>
+              <p class="font-medium text-sm sm:text-base mb-1">Research in progress</p>
+              <p class="text-xs sm:text-sm text-[var(--color-text-secondary)]">
+                Publications will appear here as they are released. Currently working on AI applications research.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {featuredPubs.length > 0 && (
+        <div class="mt-6 sm:mt-8 text-right scroll-reveal">
+          <a
+            href="/publications"
+            class="inline-flex items-center gap-2 text-xs sm:text-sm font-mono text-[var(--color-text-secondary)] hover:text-[var(--color-accent-blue)] transition-colors"
+          >
+            View all publications
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Career Timeline -->
+  <section class="py-12 sm:py-20 px-4 sm:px-6 border-t border-[var(--color-border)] relative overflow-hidden">
+    <!-- Background accent -->
+    <div class="hero-orb hero-orb-1 hidden sm:block" style="top: 50%; right: -250px; opacity: 0.5;" aria-hidden="true"></div>
+    <div class="hero-orb hero-orb-2 hidden sm:block" style="top: 20%; left: -200px; opacity: 0.4;" aria-hidden="true"></div>
+
+    <div class="max-w-5xl mx-auto relative z-10">
+      <div class="scroll-reveal">
+        <SectionHeading
+          title="Career Journey"
+          subtitle="From foundations to AI — a timeline of growth."
+        />
+      </div>
+      <Timeline entries={careerTimeline} />
+    </div>
+  </section>
+</PageLayout>
