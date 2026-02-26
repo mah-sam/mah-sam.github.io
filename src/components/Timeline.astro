@@ -1,0 +1,186 @@
+---
+export interface TimelineEntry {
+  date: string;
+  title: string;
+  company: string;
+  description: string;
+  tags?: string[];
+  accent?: 'blue' | 'violet';
+}
+
+interface Props {
+  entries: TimelineEntry[];
+}
+
+const { entries } = Astro.props;
+---
+
+<div class="timeline relative">
+  <!-- Gradient spine -->
+  <div class="timeline-line" aria-hidden="true"></div>
+
+  {entries.map((entry, i) => (
+    <div class={`timeline-item scroll-reveal ${i % 2 === 0 ? 'timeline-left' : 'timeline-right'}`}>
+      <!-- Glowing node -->
+      <div class="timeline-node" aria-hidden="true">
+        <div class={`timeline-dot ${entry.accent === 'violet' ? 'timeline-dot-violet' : 'timeline-dot-blue'}`}></div>
+        <div class={`timeline-pulse ${entry.accent === 'violet' ? 'timeline-pulse-violet' : 'timeline-pulse-blue'}`}></div>
+      </div>
+
+      <!-- Card -->
+      <div class="timeline-card glass-card p-3.5 sm:p-5">
+        <span class="inline-block font-mono text-[0.65rem] sm:text-xs text-[var(--color-text-muted)] mb-1.5 sm:mb-2 tracking-wider">
+          {entry.date}
+        </span>
+        <h3 class="font-semibold text-sm sm:text-base mb-0.5 sm:mb-1">{entry.title}</h3>
+        <p class="text-xs sm:text-sm text-[var(--color-accent-blue)] font-mono mb-2 sm:mb-3">{entry.company}</p>
+        <p class="text-xs sm:text-sm text-[var(--color-text-secondary)] leading-relaxed mb-2 sm:mb-3">
+          {entry.description}
+        </p>
+        {entry.tags && entry.tags.length > 0 && (
+          <div class="flex flex-wrap gap-1 sm:gap-1.5">
+            {entry.tags.map((tag) => (
+              <span class="tech-badge text-[0.6rem] sm:text-[0.65rem]">{tag}</span>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  ))}
+</div>
+
+<style>
+  .timeline {
+    position: relative;
+    padding: 0.5rem 0;
+  }
+
+  /* Gradient vertical line */
+  .timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      var(--color-accent-blue) 10%,
+      var(--color-accent-violet) 50%,
+      var(--color-accent-blue) 90%,
+      transparent 100%
+    );
+    transform: translateX(-50%);
+  }
+
+  .timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 0 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .timeline-left {
+    left: 0;
+    padding-right: 2.5rem;
+    text-align: right;
+  }
+
+  .timeline-right {
+    left: 50%;
+    padding-left: 2.5rem;
+  }
+
+  .timeline-left .timeline-card {
+    margin-left: auto;
+  }
+
+  /* Glowing dot on the line */
+  .timeline-node {
+    position: absolute;
+    top: 1.25rem;
+    width: 12px;
+    height: 12px;
+    z-index: 2;
+  }
+
+  .timeline-left .timeline-node {
+    right: -6px;
+  }
+
+  .timeline-right .timeline-node {
+    left: -6px;
+  }
+
+  .timeline-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+  }
+
+  .timeline-dot-blue {
+    background: var(--color-accent-blue);
+    box-shadow: 0 0 10px var(--color-accent-blue), 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+
+  .timeline-dot-violet {
+    background: var(--color-accent-violet);
+    box-shadow: 0 0 10px var(--color-accent-violet), 0 0 20px rgba(139, 92, 246, 0.3);
+  }
+
+  .timeline-pulse {
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    animation: pulse-ring 3s ease-in-out infinite;
+    z-index: 1;
+  }
+
+  .timeline-pulse-blue {
+    border: 1px solid var(--color-accent-blue);
+  }
+
+  .timeline-pulse-violet {
+    border: 1px solid var(--color-accent-violet);
+  }
+
+  @keyframes pulse-ring {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.8); opacity: 0; }
+  }
+
+  /* Mobile: single column, tight */
+  @media (max-width: 768px) {
+    .timeline {
+      padding: 0;
+    }
+
+    .timeline-line {
+      left: 0.75rem;
+    }
+
+    .timeline-item {
+      width: 100%;
+      left: 0 !important;
+      padding-left: 2rem !important;
+      padding-right: 0 !important;
+      text-align: left !important;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-node {
+      left: calc(0.75rem - 6px) !important;
+      right: auto !important;
+      top: 1rem;
+    }
+
+    .timeline-left .timeline-card {
+      margin-left: 0;
+    }
+  }
+</style>

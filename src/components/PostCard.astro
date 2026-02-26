@@ -1,0 +1,42 @@
+---
+import { formatDate, getReadingTime } from '../lib/utils';
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  slug: string;
+  tags?: string[];
+  body?: string;
+}
+
+const { title, description, date, slug, tags = [], body = '' } = Astro.props;
+const readingTime = getReadingTime(body);
+---
+
+<a href={`/blog/${slug}`} class="block glass-card p-4 sm:p-6 group">
+  <div class="flex items-center gap-2 sm:gap-3 text-[0.65rem] sm:text-xs text-[var(--color-text-muted)] mb-2 sm:mb-3 font-mono">
+    <time datetime={date.toISOString()}>
+      {formatDate(date)}
+    </time>
+    {body && (
+      <>
+        <span>·</span>
+        <span>{readingTime}</span>
+      </>
+    )}
+  </div>
+  <h3 class="text-base sm:text-lg font-semibold mb-1.5 sm:mb-2 group-hover:text-[var(--color-accent-blue)] transition-colors">
+    {title}
+  </h3>
+  <p class="text-xs sm:text-sm text-[var(--color-text-secondary)] leading-relaxed mb-3 sm:mb-4">
+    {description}
+  </p>
+  {tags.length > 0 && (
+    <div class="flex flex-wrap gap-1.5">
+      {tags.map((tag) => (
+        <span class="tech-badge text-[0.65rem] sm:text-xs">{tag}</span>
+      ))}
+    </div>
+  )}
+</a>
