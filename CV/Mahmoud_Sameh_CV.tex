@@ -1,0 +1,232 @@
+%-------------------------
+% Mahmoud Sameh - Professional CV
+% LaTeX Source
+%-------------------------
+\documentclass[a4paper,11pt]{article}
+
+%--- Packages ---
+\usepackage[margin=0.7in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{parskip}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+
+%--- Colors ---
+\definecolor{linkblue}{RGB}{0, 80, 180}
+\definecolor{subtlegray}{RGB}{100, 100, 100}
+
+%--- Hyperlink Setup ---
+\hypersetup{
+    colorlinks=true,
+    linkcolor=linkblue,
+    urlcolor=linkblue,
+    pdfborder={0 0 0},
+    pdftitle={Mahmoud Sameh -- CV},
+    pdfauthor={Mahmoud Sameh}
+}
+
+%--- Section Formatting ---
+\titleformat{\section}
+  {\large\bfseries\scshape}
+  {}
+  {0em}
+  {}
+  [\titlerule]
+
+\titlespacing*{\section}{0pt}{10pt}{6pt}
+
+%--- Custom Commands ---
+\newcommand{\cvsep}{\enspace\textbar\enspace}
+
+%--- List Settings ---
+\setlist[itemize]{leftmargin=1.5em, itemsep=1pt, parsep=0pt, topsep=2pt}
+
+%--- Page Numbers ---
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\small\textcolor{subtlegray}{Mahmoud Sameh\cvsep Page \thepage\ of \pageref{LastPage}}}
+
+%--- Document Start ---
+\begin{document}
+
+%====================
+% HEADER
+%====================
+\begin{center}
+    {\LARGE \textbf{Mahmoud Sameh}} \\[4pt]
+    \href{mailto:mahmoud.sameh0101@gmail.com}{mahmoud.sameh0101@gmail.com}
+    \cvsep +966545370163
+    \cvsep Saudi Arabia \\[2pt]
+    \href{https://github.com/mah-sam}{github.com/mah-sam}
+    \cvsep \href{https://linkedin.com/in/mah-sam}{linkedin.com/in/mah-sam}
+\end{center}
+
+%====================
+% SUMMARY
+%====================
+\vspace{-4pt}
+AI Application Researcher \& Electrical Engineer with a 4.95/5 GPA (top of class, Islamic University of Madinah). Specializing in Computer Vision, Document Intelligence, and LLM/VLM integration with three papers under review at IEEE and SoftwareX. Selected for the KAUST AI Summer Training Program (top 100 nationally) and co-winner of SDAIA's Enjaz Hackathon (150K SAR prize).
+
+%====================
+% EDUCATION
+%====================
+\section{Education}
+
+\textbf{Bachelor of Science (B.S.) in Electrical Engineering} \hfill Aug.\ 2020 -- Jun.\ 2025 \\
+\textit{Islamic University of Madinah, Madinah, Saudi Arabia}
+\begin{itemize}
+    \item GPA 4.95/5 (\href{https://github.com/mah-sam/my_cv/blob/main/Mahmoud_Sameh_Transcript.pdf?raw=true}{Academic Record}) (\href{https://github.com/mah-sam/my_cv/blob/main/Mahmoud_Sameh_Certificates.pdf?raw=true}{External Courses})
+\end{itemize}
+
+%====================
+% LANGUAGE PROFICIENCY
+%====================
+\section{Language Proficiency}
+
+\textbf{IELTS Academic} -- Overall Band \textbf{8.0} (\href{https://drive.google.com/file/d/1XNIae4_Nk_kf3iOh6QK0ZJT7tzAMEPo4}{Certificate}) \hfill Listening: 8.5 \quad Reading: 8.5 \quad Writing: 7.0 \quad Speaking: 7.0
+
+\vspace{2pt}
+\textbf{Duolingo English Test (DET)} -- Score \textbf{150}/160 (\href{https://certs.duolingo.com/hiwpvm048gwsijqu}{Certificate})
+
+%====================
+% WORK EXPERIENCE
+%====================
+\section{Work Experience}
+
+\textbf{Aajil Fintech} \hfill Oct.\ 2025 -- Feb.\ 2026 \\
+\textit{AI Engineer (Full-time Internship)}
+\begin{itemize}
+    \item Built AI infrastructure to automate credit risk assessment, reducing manual review overhead.
+    \item Developed a feature-engineering pipeline that generates financial analyses from raw application data.
+    \item Trained and deployed classification/extraction models with end-to-end MLOps.
+    \item Bridged SMEs and the AI team, translating domain feedback into actionable model improvements.
+\end{itemize}
+
+\textbf{King Fahd University of Petroleum and Minerals} \hfill Jun.\ 2025 -- Aug.\ 2025 \\
+\textit{Research Assistant (Full-time Internship)}
+\begin{itemize}
+    \item Designed a complete experimental protocol for a novel hyperspectral imaging dataset of date fruits, covering sample scanning, oven-drying ground truth, and data management.
+    \item Developed the full software stack for the lab's push-broom HSI hardware, integrating camera control, stepper motor synchronization, and data acquisition into a single Python application.
+    \item Created an open-source GUI (PyQt6) for hyperspectral data calibration, cube assembly, and analysis -- now the subject of a journal paper under review at SoftwareX.
+\end{itemize}
+
+\textbf{Islamic University of Madinah} \hfill Apr.\ 2023 -- Jun.\ 2025 \\
+\textit{Engineering College Student Contributor (Part-time)}
+\begin{itemize}
+    \item Managed the Engineering College's social media, producing content that increased student engagement.
+    \item Led student teams on college-level technical projects, offering mentorship and coordination.
+    \item Provided student-representative feedback to faculty on program initiatives and curriculum.
+\end{itemize}
+
+%====================
+% PUBLICATIONS
+%====================
+\section{Publications}
+
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Predicting Emergency Department Patient Arrivals at Hospitals Using Machine Learning Techniques} \\
+    A.\ M.\ Alenezi, \textbf{M. Sameh}, M. Aljohani, and H.\ S.\ Alharbi \hfill \href{https://docs.google.com/document/d/1YJsUc_-qI6TCAGRgsFoFuo2_IBrlQCAmLLoJtAbtgSA/edit?usp=sharing}{Abstract} \\
+    \textit{Under Review $\cdot$ MDPI Healthcare}
+
+    \item \textbf{Real-Time Human Fall Detection from Video Using YOLOv11 with Pose Estimation: A Paradigm Shift Towards Efficient Transformer-Based Architectures} \\
+    A. BenAbdennour, \textbf{M. Sameh}, B.\ A.\ Khawaja, A.\ K.\ Vallappil, A.\ M.\ Alenezi, Q.\ H.\ Abbasi, and S. Qazi \hfill \href{https://docs.google.com/document/d/1c1hLax7feqf8R87tZd5Yxs2vcSJZjuqhp3YYsIgWoYo/edit?usp=sharing}{Abstract} \\
+    \textit{Revision Submitted $\cdot$ IEEE Access $\cdot$ ID: 05ec479f-c887-4758-b7a4-2d612db9e23f}
+
+    \item \textbf{Efficiently Adapting SAM 2 for Automated Schematic Capture from Hand-Drawn Circuit Diagrams} \\
+    \textbf{M. Sameh}, A. BenAbdennour, and J.\ K.\ Ali \hfill \href{https://docs.google.com/document/d/1F6Xp7tv1xqBt4ojfr0OUyZ-czaBAweY8-Oc1IMQmPW4/edit?usp=sharing}{Abstract} \\
+    \textit{Revision Under Preparation $\cdot$ IEEE Trans.\ on CAD of Integrated Circuits and Systems $\cdot$ No.\ TCAD-2025-0847}
+
+    \item \textbf{HSI Control Suite: An Integrated GUI for Operating and Acquiring Data from DIY Push-Broom Hyperspectral Imaging Systems} \\
+    \textbf{M. Sameh}, A. Albeladi, and A. Fawzy \hfill \href{https://docs.google.com/document/d/1CRzYRawhIHsV998NPdhDbWc8VHjAiv6j2qhZMFhrm08/edit?usp=sharing}{Abstract} \\
+    \textit{Revision Submitted $\cdot$ SoftwareX $\cdot$ No.\ SOFTX-D-25-00853}
+\end{itemize}
+
+%====================
+% SKILLS
+%====================
+\section{Skills}
+
+\textbf{AI/ML:} Deep Learning, Computer Vision, Document Intelligence, NLP/LLM Integration, Data Preprocessing \\
+\textbf{Languages:} Python (PyTorch, TensorFlow, Pandas, OpenCV), C, SQL, JavaScript \\
+\textbf{Engineering:} Control Theory, Digital Signal Processing, Embedded Systems, Robotics \\
+\textbf{Tools:} MATLAB/Simulink/Simscape, Git, Django, HTML/CSS
+
+%====================
+% PROJECTS
+%====================
+\section{Projects}
+
+\textbf{Efficiently Adapting SAM 2 for Hand-Drawn Circuit Diagram Segmentation} \textit{(Research Paper)} \\
+Led research adapting the SAM 2 foundation model for circuit segmentation in a low-data regime (267 masks) using LoRA on select encoder/decoder layers and a novel Multi-Kernel Refinement post-upsampling layer. \\
+{\small\textit{Key Technologies: Python, PyTorch, LoRA, PEFT, Transformers}}
+
+\vspace{6pt}
+\textbf{CircuitVision: AI-Powered Recognition of Hand-Drawn Electrical Circuits} \\
+\textit{(2nd Best Graduation Project in AI University-Wide)} \\
+Led development of an end-to-end system converting circuit diagrams into simulatable netlists via a pipeline of fine-tuned YOLOv11 detection, custom OpenCV connectivity algorithms, SAM 2 segmentation, and Gemini API for value recognition. \\
+{\small\textit{Key Technologies: Python, PyTorch, YOLOv11, OpenCV, SAM 2, Streamlit, PySpice}}
+
+\vspace{6pt}
+\textbf{Nathir (\textnormal{ناظر}): AI Legal Case Classification System} \textit{(Enjaz Hackathon National Winner -- 150,000 SAR Prize)} \\
+Co-developed an AI system for classifying legal cases on the Saudi ``Najiz'' platform, engineering advanced prompts for Google Gemini LLM to interpret user input against the Saudi legal framework with 95\% target accuracy. \\
+{\small\textit{Key Technologies: Python, Google Gemini API, Prompt Engineering, LLM Integration}}
+
+\vspace{6pt}
+\textbf{Real-Time Fall Detection using YOLOv11 for Assistive Monitoring} \\
+Fine-tuned a YOLOv11 model for fall event detection, achieving $\sim$5ms inference ($\sim$197 FPS) suitable for real-time elderly monitoring applications. \\
+{\small\textit{Key Technologies: Python, PyTorch, YOLOv11}}
+
+\vspace{6pt}
+\textbf{AI for Housing Defaulter Prediction \& Critical Case Detection} \textit{(DAL Datathon)} \\
+Built a dual-solution system: XGBoost regressor for regional defaulter forecasting and a Restricted Boltzmann Machine for anomaly detection of cases requiring specialized review. \\
+{\small\textit{Key Technologies: Python, XGBoost, RBM, Pandas, Scikit-learn}}
+
+\vspace{6pt}
+\textbf{Explainable AI for Cardiovascular Disease Risk Prediction using SHAP} \\
+Applied SHAP to a CVD risk prediction model to extract global feature importance (blood pressure, age) and local patient-specific explanations, demonstrating XAI for clinical trust. \\
+{\small\textit{Key Technologies: Python, Scikit-learn, SHAP, Matplotlib}}
+
+\vspace{6pt}
+\textbf{Realigning Control System Labs: Bridging Theory with Practical Application} \\
+Initiated and led a student-driven project to redesign Control Systems lab modules, introducing the System Identification Toolbox, simulation-based validation, and experiments with real-world factors (noise, saturation, nonlinearities). \\
+{\small\textit{Key Technologies: MATLAB, Simulink, System Identification Toolbox}}
+
+\vspace{4pt}
+\noindent For more details \& projects: \href{https://www.linkedin.com/in/mah-sam/details/projects/}{LinkedIn Projects} \quad|\quad \href{https://github.com/mah-sam?tab=repositories}{GitHub Repositories}
+
+%====================
+% COURSES
+%====================
+\section{Courses}
+
+\begin{itemize}
+    \item \href{https://cs50.harvard.edu/certificates/34fb726e-df28-4e23-b51a-567465d2ba36}{Harvard CS50: AI with Python}, \href{https://cs50.harvard.edu/certificates/a7046c46-5173-4d85-9b46-4e80d49e9e5f}{Intro to CS}, \href{https://cs50.harvard.edu/certificates/a5b061d3-6096-4f6f-95f2-5abaf5068b45}{Understanding Technology}
+    \item KAUST Academy -- \href{https://drive.google.com/file/d/1PmtHOIsClAmkJRSYVuh4JTqRT2wR0jRy}{Intro to AI} \& \href{https://drive.google.com/file/d/1rHS5PM1B7ybo28bhWVvomUxvcA3THdSQ}{Advanced AI} (Passed All 3 Stages)
+    \item \href{https://www.coursera.org/account/accomplishments/certificate/XBWLJMSRCNCS}{Deep Learning Specialization} (5 Courses -- deeplearning.ai)
+    \item \href{https://www.coursera.org/account/accomplishments/certificate/K9KVLDVQXKPH}{Michigan Python Specialization} (5 Courses)
+    \item \href{https://www.coursera.org/account/accomplishments/certificate/ZNPZ3QTJP4DR}{Mathematics for ML \& Data Science Specialization} (2 Courses)
+\end{itemize}
+\noindent Full list with certificates: \href{https://github.com/mah-sam/my_cv/blob/main/Mahmoud_Sameh_Certificates.pdf?raw=true}{Direct Link}
+
+%====================
+% PARTICIPATION & ACKNOWLEDGMENT
+%====================
+\section{Participation \& Acknowledgment}
+
+\begin{itemize}
+    \item Aramco \& RDIA's -- AI Co-Innovation (Sep.\ 2025) (\href{https://drive.google.com/file/d/1nK80cLlYmrL7zdheAk0iBbEg5E7hZLQ1}{Certificate})
+    \item Acknowledgment of Academic Excellence (May.\ 2025) (\href{https://drive.google.com/file/d/1uWwoPLUG6_SnSjrmVi59E9qlraesoGZN}{Certificate})
+    \item 13th International Cultural Festival (Apr.\ 2025) (\href{https://drive.google.com/file/d/11go0R0-DrOSXo_JHKjosuXk-_3gTVG38}{Certificate})
+    \item KSU Engineering Day Competitions (Feb.\ 2025) (\href{https://drive.google.com/file/d/1yqjpORplfalYprRufce9tcu6ARD4IiX7}{Certificate})
+    \item Enjaz Hackathon (Jan.\ 2025) (\href{https://drive.google.com/file/d/1Sf54DT8y95k4F92S2wiBXaH75mxIL_mk}{Certificate 1}) (\href{https://drive.google.com/file/d/1aL0fQ2zMIULmd_scjSJOl4Cgo_PJy3ho}{Certificate 2})
+    \item WRO Saudi 2023 RoboSport (Oct.\ 2023) (\href{https://drive.google.com/file/d/1zBxdX8rtewzGz0tqwLYWdWaltRhbXjqd}{Certificate})
+    \item International Conference on Cyber Terrorism (Dec.\ 2022) (\href{https://drive.google.com/file/d/1DEWFjuyaYwk1IP00cqpmQC7vgaG10q9M}{Certificate})
+\end{itemize}
+
+\end{document}
