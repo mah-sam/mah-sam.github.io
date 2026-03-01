@@ -37,13 +37,6 @@ const { entries } = Astro.props;
         <p class="text-xs sm:text-sm text-[var(--color-text-secondary)] leading-relaxed mb-2 sm:mb-3">
           {entry.description}
         </p>
-        {entry.tags && entry.tags.length > 0 && (
-          <div class="flex flex-wrap gap-1 sm:gap-1.5">
-            {entry.tags.map((tag) => (
-              <span class="tech-badge text-[0.6rem] sm:text-[0.65rem]">{tag}</span>
-            ))}
-          </div>
-        )}
       </div>
     </div>
   ))}

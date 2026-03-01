@@ -2,7 +2,7 @@
 title: "Realigning Control System Labs: Bridging Theory with Practical Application"
 description: "Student-driven redesign of Control Systems lab modules at IU Madinah, introducing the System Identification Toolbox, simulation-based validation, and experiments with real-world factors."
 date: 2025-04-01
-tags: ["MATLAB", "Simulink", "System Identification", "Control Theory", "Education"]
+tags: ["Control Systems"]
 featured: false
 order: 7
 ---

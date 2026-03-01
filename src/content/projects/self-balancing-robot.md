@@ -2,7 +2,7 @@
 title: "Self-Balancing Robot (Inverted Pendulum) via Deep Reinforcement Learning"
 description: "Two-wheeled self-balancing robot progressing from PID and MPC to a DQN agent. Physical prototype built and modeled in Simscape for simulation-to-reality transfer validation."
 date: 2024-06-01
-tags: ["MATLAB", "Simulink", "Simscape", "Reinforcement Learning", "Python", "Raspberry Pi"]
+tags: ["Control Systems", "Robotics", "Reinforcement Learning"]
 featured: false
 order: 4
 ---
