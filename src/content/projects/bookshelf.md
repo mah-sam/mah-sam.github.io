@@ -7,7 +7,7 @@ image: "/images/projects/bs.gif"
 github: "https://github.com/mah-sam/bookshelf-cs50x"
 live: "https://bookshelf-ms.herokuapp.com"
 featured: false
-order: 4
+order: 13
 ---
 
 My final project for Harvard's CS50x course. A full-stack web application that provides a personal book management system where users can catalog, organize, and track books in their personal shelves.
