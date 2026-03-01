@@ -2,7 +2,7 @@
 title: "Discord Read-Image Bot"
 description: "A Discord bot that reads text from the last sent image using Tesseract OCR."
 date: 2022-06-01
-tags: ["Python", "Discord.py", "Tesseract OCR", "Computer Vision"]
+tags: ["Python", "Computer Vision"]
 image: "/images/projects/Screenshot_144.png"
 github: "https://github.com/mah-sam/read-image-bot"
 featured: false

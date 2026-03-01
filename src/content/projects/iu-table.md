@@ -2,7 +2,7 @@
 title: "IU Table"
 description: "A browser addon to reorganize the timetable of lectures on the Islamic University website according to days of the week."
 date: 2023-06-01
-tags: ["JavaScript", "Browser Extension", "DOM Manipulation"]
+tags: ["Web"]
 image: "/images/projects/iu_table.gif"
 github: "https://github.com/mah-sam/IU-table"
 featured: false

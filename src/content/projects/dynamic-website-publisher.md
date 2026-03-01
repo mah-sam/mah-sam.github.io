@@ -2,7 +2,7 @@
 title: "Dynamic Website Publisher"
 description: "Saves a dynamic website and its associated resources to your local machine and publishes it to a remote Git repository."
 date: 2023-08-01
-tags: ["Python", "Git", "Web Scraping", "Automation"]
+tags: ["Automation", "Python"]
 github: "https://github.com/mah-sam/Dynamic_to_Static/"
 featured: false
 order: 10
