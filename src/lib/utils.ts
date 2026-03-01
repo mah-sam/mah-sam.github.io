@@ -15,13 +15,13 @@ export function getReadingTime(content: string): string {
 
 export const SITE = {
   title: 'Mahmoud Sameh',
-  description: 'AI Solution Engineer — Building intelligent solutions at the intersection of AI research and engineering.',
+  description: 'AI Researcher & Engineer — Foundation model adaptation, computer vision, and applied ML. Four papers under review at IEEE and MDPI.',
   url: 'https://mahmoud-sameh.me',
   author: 'Mahmoud Sameh',
   email: 'mahmoud.sameh0101@gmail.com',
   social: {
     github: 'https://github.com/mah-sam',
-    linkedin: 'https://linkedin.com/in/mahmoud-sameh-37560420b',
+    linkedin: 'https://linkedin.com/in/mah-sam',
     twitter: 'https://twitter.com/mah_sam01',
   },
   analytics: {
