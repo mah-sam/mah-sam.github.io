@@ -36,7 +36,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Light mode — override all tokens globally */
+/* Light mode - override all tokens globally */
 [data-theme="light"] {
   --color-bg-primary: #f8f9fa;
   --color-bg-secondary: #ffffff;

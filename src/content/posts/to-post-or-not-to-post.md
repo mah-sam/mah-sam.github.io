@@ -1,6 +1,6 @@
 ---
 title: "To Post or Not to Post"
-description: "Reflections on why I started blogging — the unique quality of written expression and the freedom it offers over face-to-face communication."
+description: "Reflections on why I started blogging, the unique quality of written expression and the freedom it offers over face-to-face communication."
 date: 2023-02-03
 tags: ["personal", "writing"]
 draft: false
