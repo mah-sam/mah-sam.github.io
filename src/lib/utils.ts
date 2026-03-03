@@ -15,7 +15,7 @@ export function getReadingTime(content: string): string {
 
 export const SITE = {
   title: 'Mahmoud Sameh',
-  description: 'AI Researcher & Engineer — Foundation model adaptation, computer vision, and applied ML. Four papers under review at IEEE and MDPI.',
+  description: 'AI Researcher & Engineer. Foundation model adaptation, computer vision, and applied ML.',
   url: 'https://mahmoud-sameh.me',
   author: 'Mahmoud Sameh',
   email: 'mahmoud.sameh0101@gmail.com',

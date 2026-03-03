@@ -7,4 +7,4 @@ featured: false
 order: 7
 ---
 
-Initiated and led a student-driven project to redesign Control Systems laboratory modules at the Islamic University of Madinah. Introduced the System Identification Toolbox, simulation-based validation workflows, and experiments incorporating real-world factors such as noise, saturation, and nonlinearities — earning a Letter of Appreciation from the department.
+Initiated and led a student-driven project to redesign Control Systems laboratory modules at the Islamic University of Madinah. Introduced the System Identification Toolbox, simulation-based validation workflows, and experiments incorporating real-world factors such as noise, saturation, and nonlinearities, earning a Letter of Appreciation from the department.

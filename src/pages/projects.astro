@@ -55,6 +55,8 @@ const allTags = [...new Set(projects.flatMap((p) => p.data.tags))].sort();
               image={project.data.image}
               github={project.data.github}
               live={project.data.live}
+              link={project.data.link}
+              linkLabel={project.data.linkLabel}
             />
           </div>
         ))}

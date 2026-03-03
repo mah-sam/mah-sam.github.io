@@ -26,11 +26,17 @@ try {
 
 const careerTimeline: TimelineEntry[] = [
   {
+    date: 'Mar 2026 – Present',
+    title: 'Independent AI Researcher & Consultant',
+    company: 'Shannah App · Independent',
+    description: 'Conducting independent AI research and consulting for select projects. Advising Shannah, a pre-launch application currently under development, on its AI architecture and capabilities.',
+    accent: 'violet',
+  },
+  {
     date: 'Oct 2025 – Feb 2026',
-    title: 'AI Engineer',
+    title: 'AI Engineer Intern',
     company: 'Aajil Fintech',
     description: 'Built AI infrastructure to automate credit risk assessment. Developed a feature-engineering pipeline generating financial analyses from raw application data. Trained and deployed classification/extraction models with end-to-end MLOps.',
-    tags: ['MLOps', 'Credit Risk AI', 'Python', 'LLM Integration'],
     accent: 'blue',
   },
   {
@@ -38,24 +44,35 @@ const careerTimeline: TimelineEntry[] = [
     title: 'Research Assistant',
     company: 'King Fahd University of Petroleum and Minerals',
     description: 'Designed a complete experimental protocol for a novel hyperspectral imaging dataset of date fruits. Developed the full software stack for push-broom HSI hardware and created an open-source GUI (PyQt6) now under journal review at SoftwareX.',
-    tags: ['Hyperspectral Imaging', 'Python', 'PyQt6', 'Open Source'],
     accent: 'violet',
   },
   {
-    date: 'Aug 2020 – Jun 2025',
+    date: '2021 – 2025',
     title: 'B.S. Electrical Engineering',
     company: 'Islamic University of Madinah',
-    description: 'Graduated top of class with a 4.95/5 GPA. Research across foundation model adaptation, computer vision, and applied ML. Four papers under review at IEEE TCAD, IEEE Access, SoftwareX, and MDPI Healthcare.',
-    tags: ['Research', 'Computer Vision', 'Deep Learning', 'Control Systems'],
+    description: 'Chose EE for its balance of hardware, software, and AI. Graduated top of class (4.95/5). Complemented formal education with Harvard\'s CS50 and self-driven courses in Python, C, and AI. Led and developed numerous projects across computer vision, robotics, and applied ML. Led technical aspects of multiple research papers as first or second author, won Enjaz Hackathon, earned 2nd Best Graduation Project in AI, and passed KAUST Academy\'s AI stages.',
     accent: 'blue',
   },
   {
-    date: 'Apr 2023 – Jun 2025',
-    title: 'Student Contributor',
-    company: 'IU Madinah — Engineering College',
-    description: 'Managed college social media, led student teams on technical projects, and provided student-representative feedback on curriculum. Won Enjaz Hackathon and earned 2nd Best Graduation Project in AI university-wide.',
-    tags: ['Leadership', 'Mentorship', 'AI Projects', 'Hackathon'],
+    date: '2020 – 2021',
+    title: 'Preparatory Year',
+    company: 'Islamic University of Madinah',
+    description: 'Passed with a perfect 5/5 GPA without much effort, thanks to the self-study foundation built during the gap year (Thank you Khan Academy). Used the abundant free time to go deeper into calculus, linear algebra, and coding through online courses.',
     accent: 'violet',
+  },
+  {
+    date: '2019 – 2020',
+    title: 'The Gap Year',
+    company: 'Self-Directed',
+    description: 'Took a deliberate year off to relearn mathematics the right way, revitalizing a love that high school methods had nearly killed. If you hate math, you\'re learning it wrong. Dove into JavaScript, computer science fundamentals, and psychology. Khan Academy was the star of that year: 1.9 million energy points earned through relentless dedication. A year where my love for coding and computers grew rapidly.',
+    accent: 'violet',
+  },
+  {
+    date: '2019',
+    title: 'High School Graduate',
+    company: 'Top 5 in Class',
+    description: 'Graduated as one of the top 5 students. Left with a determination to learn differently, setting the stage for everything that followed.',
+    accent: 'blue',
   },
 ];
 ---
@@ -81,6 +98,8 @@ const careerTimeline: TimelineEntry[] = [
               image={project.data.image}
               github={project.data.github}
               live={project.data.live}
+              link={project.data.link}
+              linkLabel={project.data.linkLabel}
             />
           </div>
         ))}
@@ -163,7 +182,7 @@ const careerTimeline: TimelineEntry[] = [
       <div class="scroll-reveal">
         <SectionHeading
           title="Career Journey"
-          subtitle="From foundations to AI — a timeline of growth."
+          subtitle="From foundations to AI, a timeline of growth."
         />
       </div>
       <Timeline entries={careerTimeline} />
