@@ -18,6 +18,7 @@ let featuredPubs: any[] = [];
 try {
   const allPubs = await getCollection('publications');
   featuredPubs = allPubs
+    .filter((p) => p.data.featured)
     .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
     .slice(0, 3);
 } catch {
@@ -80,44 +81,8 @@ const careerTimeline: TimelineEntry[] = [
 <PageLayout>
   <Hero />
 
-  <!-- Featured Projects -->
-  <section class="py-12 sm:py-20 px-4 sm:px-6">
-    <div class="max-w-6xl mx-auto">
-      <div class="scroll-reveal">
-        <SectionHeading
-          title="Featured Projects"
-          subtitle="Selected work showcasing my engineering and problem-solving approach."
-        />
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-        {featuredProjects.map((project) => (
-          <div class="scroll-reveal">
-            <ProjectCard
-              title={project.data.title}
-              description={project.data.description}
-              image={project.data.image}
-              github={project.data.github}
-              live={project.data.live}
-              link={project.data.link}
-              linkLabel={project.data.linkLabel}
-            />
-          </div>
-        ))}
-      </div>
-      <div class="mt-6 sm:mt-8 text-right scroll-reveal">
-        <a
-          href="/projects"
-          class="inline-flex items-center gap-2 text-xs sm:text-sm font-mono text-[var(--color-text-secondary)] hover:text-[var(--color-accent-blue)] transition-colors"
-        >
-          View all projects
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
   <!-- Featured Publications -->
-  <section class="py-12 sm:py-20 px-4 sm:px-6 border-t border-[var(--color-border)]">
+  <section class="py-12 sm:py-20 px-4 sm:px-6">
     <div class="max-w-6xl mx-auto">
       <div class="scroll-reveal">
         <SectionHeading
@@ -169,6 +134,42 @@ const careerTimeline: TimelineEntry[] = [
           </a>
         </div>
       )}
+    </div>
+  </section>
+
+  <!-- Featured Projects -->
+  <section class="py-12 sm:py-20 px-4 sm:px-6 border-t border-[var(--color-border)]">
+    <div class="max-w-6xl mx-auto">
+      <div class="scroll-reveal">
+        <SectionHeading
+          title="Featured Projects"
+          subtitle="Selected work showcasing my engineering and problem-solving approach."
+        />
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        {featuredProjects.map((project) => (
+          <div class="scroll-reveal">
+            <ProjectCard
+              title={project.data.title}
+              description={project.data.description}
+              image={project.data.image}
+              github={project.data.github}
+              live={project.data.live}
+              link={project.data.link}
+              linkLabel={project.data.linkLabel}
+            />
+          </div>
+        ))}
+      </div>
+      <div class="mt-6 sm:mt-8 text-right scroll-reveal">
+        <a
+          href="/projects"
+          class="inline-flex items-center gap-2 text-xs sm:text-sm font-mono text-[var(--color-text-secondary)] hover:text-[var(--color-accent-blue)] transition-colors"
+        >
+          View all projects
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
     </div>
   </section>
 

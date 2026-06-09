@@ -3,6 +3,8 @@ title: "Nathir: AI Legal Case Classification System"
 description: "AI system for classifying legal cases on Saudi Arabia's Najiz platform using advanced prompt engineering with Google Gemini LLM, achieving 95% target accuracy. Co-winner of SDAIA's Enjaz Hackathon (150,000 SAR prize)."
 date: 2025-01-01
 tags: ["LLMs"]
+link: "https://www.linkedin.com/in/mah-sam/details/projects/"
+linkLabel: "LinkedIn"
 featured: true
 order: 3
 ---

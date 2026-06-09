@@ -4,7 +4,7 @@ description: "Fast, modern LaTeX editor that runs entirely in the browser. Compi
 date: 2026-04-01
 tags: ["Web Development", "TypeScript", "WebAssembly"]
 live: "https://fastlatex.com"
-featured: true
+featured: false
 order: 0
 ---
 

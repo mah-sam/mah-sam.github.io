@@ -5,4 +5,5 @@ venue: "Revision Under Preparation · IEEE Transactions on CAD of Integrated Cir
 date: 2025-09-01
 abstract: "This paper proposes an efficient adaptation of Segment Anything Model 2 (SAM 2) for the task of automated schematic capture from hand-drawn electrical circuit diagrams. By fine-tuning SAM 2's video segmentation capabilities on circuit imagery, the system accurately segments and identifies components, enabling downstream netlist extraction and circuit simulation."
 tags: ["Computer Vision", "Foundation Models", "SAM 2", "Circuit Diagrams", "EDA"]
+featured: true
 ---
