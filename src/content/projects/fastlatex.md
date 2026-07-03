@@ -3,6 +3,7 @@ title: "FastLaTeX: Browser-Based LaTeX Editor"
 description: "Fast, modern LaTeX editor that runs entirely in the browser. Compiles real PDFs locally using WebAssembly. No server, no uploads, no waiting."
 date: 2026-04-01
 tags: ["Web Development", "TypeScript", "WebAssembly"]
+image: "/images/projects/fastlatex-desktop.png"
 live: "https://fastlatex.com"
 featured: false
 order: 0

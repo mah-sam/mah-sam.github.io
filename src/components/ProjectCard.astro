@@ -4,17 +4,31 @@ interface Props {
   description: string;
   tags?: string[];
   image?: string;
+  video?: string;
   github?: string;
   live?: string;
   link?: string;
   linkLabel?: string;
 }
 
-const { title, description, tags = [], image, github, live, link, linkLabel } = Astro.props;
+const { title, description, tags = [], image, video, github, live, link, linkLabel } = Astro.props;
 ---
 
 <div class="glass-card overflow-hidden group">
-  {image && (
+  {video ? (
+    <div class="overflow-hidden">
+      <video
+        src={video}
+        class="w-full h-36 sm:h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        aria-label={title}
+      ></video>
+    </div>
+  ) : image && (
     <div class="overflow-hidden">
       <img
         src={image}

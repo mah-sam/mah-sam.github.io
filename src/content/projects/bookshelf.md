@@ -3,7 +3,7 @@ title: "Bookshelf"
 description: "A database application that allows members to manage books in their personal shelves. Final project for Harvard's CS50x."
 date: 2022-01-01
 tags: ["Full Stack", "Web"]
-image: "/images/projects/bs.gif"
+video: "/images/projects/bs.mp4"
 github: "https://github.com/mah-sam/bookshelf-cs50x"
 live: "https://bookshelf-ms.herokuapp.com"
 featured: false

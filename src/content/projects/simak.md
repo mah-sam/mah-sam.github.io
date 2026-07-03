@@ -4,6 +4,7 @@ description: "An agentic, Arabic-first document-understanding platform for the S
 date: 2026-05-01
 tags: ["LLMs", "Agents"]
 live: "https://simak.ai"
+video: "/videos/simak-desktop.mp4"
 featured: true
 order: 0
 ---
