@@ -5,13 +5,15 @@ interface Props {
   tags?: string[];
   image?: string;
   video?: string;
+  date?: Date;
   github?: string;
   live?: string;
   link?: string;
   linkLabel?: string;
 }
 
-const { title, description, tags = [], image, video, github, live, link, linkLabel } = Astro.props;
+const { title, description, tags = [], image, video, date, github, live, link, linkLabel } = Astro.props;
+const year = date ? new Date(date).getFullYear() : undefined;
 ---
 
 <div class="glass-card overflow-hidden group">
@@ -39,7 +41,12 @@ const { title, description, tags = [], image, video, github, live, link, linkLab
     </div>
   )}
   <div class="p-4 sm:p-5">
-    <h3 class="text-base sm:text-lg font-semibold mb-1.5 sm:mb-2">{title}</h3>
+    <div class="flex items-start justify-between gap-3 mb-1.5 sm:mb-2">
+      <h3 class="text-base sm:text-lg font-semibold">{title}</h3>
+      {year && (
+        <span class="shrink-0 font-mono text-[0.65rem] sm:text-xs text-[var(--color-text-muted)] mt-0.5 sm:mt-1">{year}</span>
+      )}
+    </div>
     <p class="text-xs sm:text-sm text-[var(--color-text-secondary)] mb-3 sm:mb-4 leading-relaxed line-clamp-3">{description}</p>
 
     {tags.length > 0 && (
