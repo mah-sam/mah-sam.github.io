@@ -11,10 +11,22 @@ interface Props {
 }
 
 const { title, authors, venue, date, doi, pdf, abstract, tags = [] } = Astro.props;
+
+const links = [
+  doi && { href: `https://doi.org/${doi}`, label: 'DOI' },
+  pdf && { href: pdf, label: 'PDF' },
+].filter(Boolean) as { href: string; label: string }[];
 ---
 
-<div class="glass-card p-4 sm:p-6">
-  <div class="flex items-center gap-2 sm:gap-3 text-[0.65rem] sm:text-xs text-[var(--color-text-muted)] mb-2 sm:mb-3 font-mono">
+<div
+  class="glass-card p-3.5 sm:p-6"
+  data-modal-card
+  data-modal-title={title}
+  role="button"
+  tabindex="0"
+  aria-label={`View details: ${title}`}
+>
+  <div class="flex items-center gap-2 sm:gap-3 text-[0.65rem] sm:text-xs text-[var(--color-text-muted)] mb-1.5 sm:mb-3 font-mono">
     <time datetime={date.toISOString()}>
       {date.getFullYear()}
     </time>
@@ -22,20 +34,20 @@ const { title, authors, venue, date, doi, pdf, abstract, tags = [] } = Astro.pro
     <span>{venue}</span>
   </div>
 
-  <h3 class="text-base sm:text-lg font-semibold mb-1.5 sm:mb-2">{title}</h3>
+  <h3 class="text-base sm:text-lg font-semibold mb-1 sm:mb-2">{title}</h3>
 
-  <p class="text-xs sm:text-sm text-[var(--color-text-secondary)] mb-2 sm:mb-3">
+  <p class="text-xs sm:text-sm text-[var(--color-text-secondary)] mb-1.5 sm:mb-3">
     {authors.join(', ')}
   </p>
 
   {abstract && (
-    <p class="text-xs sm:text-sm text-[var(--color-text-secondary)] leading-relaxed mb-3 sm:mb-4 line-clamp-3">
+    <p class="text-xs sm:text-sm text-[var(--color-text-secondary)] leading-relaxed mb-2.5 sm:mb-4 line-clamp-2 sm:line-clamp-3">
       {abstract}
     </p>
   )}
 
   {tags.length > 0 && (
-    <div class="flex flex-wrap gap-1 mb-3 sm:mb-4">
+    <div class="hidden sm:flex flex-wrap gap-1 mb-3 sm:mb-4">
       {tags.map((tag) => (
         <span class="tech-badge text-[0.6rem] sm:text-[0.65rem] px-1.5 py-0.5">{tag}</span>
       ))}
@@ -43,27 +55,65 @@ const { title, authors, venue, date, doi, pdf, abstract, tags = [] } = Astro.pro
   )}
 
   <div class="flex items-center gap-3">
-    {doi && (
+    {links.map(({ href, label }) => (
       <a
-        href={`https://doi.org/${doi}`}
+        href={href}
         target="_blank"
         rel="noopener noreferrer"
         class="inline-flex items-center gap-1.5 text-xs sm:text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-accent-blue)] transition-colors font-mono"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        DOI
+        {label === 'PDF' ? (
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><polyline points="14 2 14 8 20 8"/></svg>
+        ) : (
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        )}
+        {label}
       </a>
-    )}
-    {pdf && (
-      <a
-        href={pdf}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-1.5 text-xs sm:text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-accent-blue)] transition-colors font-mono"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><polyline points="14 2 14 8 20 8"/></svg>
-        PDF
-      </a>
-    )}
+    ))}
   </div>
+
+  <template data-card-detail>
+    <div class="flex items-center gap-2 sm:gap-3 text-xs text-[var(--color-text-muted)] mb-2 font-mono">
+      <time datetime={date.toISOString()}>
+        {date.getFullYear()}
+      </time>
+      <span>·</span>
+      <span>{venue}</span>
+    </div>
+    <h3 class="text-lg sm:text-xl font-semibold mb-2">{title}</h3>
+    <p class="text-sm text-[var(--color-text-secondary)] mb-3">
+      {authors.join(', ')}
+    </p>
+    {tags.length > 0 && (
+      <div class="flex flex-wrap gap-1 mb-4">
+        {tags.map((tag) => (
+          <span class="tech-badge text-[0.65rem] px-1.5 py-0.5">{tag}</span>
+        ))}
+      </div>
+    )}
+    {abstract && (
+      <div class="prose text-sm sm:text-base mb-5">
+        <p>{abstract}</p>
+      </div>
+    )}
+    {links.length > 0 && (
+      <div class="flex items-center gap-4">
+        {links.map(({ href, label }) => (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-accent-blue)] transition-colors font-mono"
+          >
+            {label === 'PDF' ? (
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><polyline points="14 2 14 8 20 8"/></svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            )}
+            {label}
+          </a>
+        ))}
+      </div>
+    )}
+  </template>
 </div>

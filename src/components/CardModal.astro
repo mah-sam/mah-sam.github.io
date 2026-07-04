@@ -1,0 +1,184 @@
+---
+// Shared detail modal: cards opt in with `data-modal-card` and provide their
+// expanded markup in an inert <template data-card-detail> child.
+---
+
+<dialog id="card-modal" class="card-modal" aria-label="Details">
+  <div class="card-modal-inner">
+    <button type="button" class="card-modal-close" aria-label="Close details">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+    <div class="card-modal-content"></div>
+  </div>
+</dialog>
+
+<style is:global>
+  .card-modal {
+    margin: auto;
+    padding: 0;
+    border: none;
+    background: transparent;
+    width: min(calc(100% - 2rem), 42rem);
+    max-height: 85dvh;
+    overflow: visible;
+  }
+  .card-modal::backdrop {
+    background: rgba(5, 5, 10, 0.65);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .card-modal-inner {
+    position: relative;
+    background: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border-hover);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+    border-radius: 16px;
+    padding: 1.25rem 1.25rem 1.5rem;
+    max-height: 85dvh;
+    overflow-y: auto;
+    /* `none` (not `contain`) also disables the elastic bounce that overshoots
+       when flinging back to the top of the sheet */
+    overscroll-behavior: none;
+  }
+  .card-modal-close {
+    position: sticky;
+    top: 0;
+    float: right;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    margin-left: 0.75rem;
+    border-radius: 9999px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-card);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 10;
+  }
+  .card-modal-close:hover {
+    color: var(--color-text-primary);
+    border-color: var(--color-border-hover);
+  }
+  .card-modal[open] {
+    animation: card-modal-in 0.25s ease-out;
+  }
+  .card-modal[open]::backdrop {
+    animation: card-modal-fade 0.25s ease-out;
+  }
+  @keyframes card-modal-fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes card-modal-in {
+    from { opacity: 0; transform: translateY(12px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  /* Bottom sheet on phone */
+  @media (max-width: 639px) {
+    .card-modal {
+      margin: auto 0 0;
+      width: 100%;
+      max-width: 100%;
+    }
+    .card-modal-inner {
+      border-radius: 20px 20px 0 0;
+      border-bottom: none;
+      padding: 1rem 1rem 2rem;
+    }
+    .card-modal-inner::before {
+      /* drag-handle affordance */
+      content: "";
+      display: block;
+      width: 2.5rem;
+      height: 0.25rem;
+      border-radius: 9999px;
+      background: var(--color-border-hover);
+      margin: 0 auto 0.75rem;
+    }
+    .card-modal[open] {
+      animation: card-modal-up 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+    @keyframes card-modal-up {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+  }
+  html.card-modal-open,
+  html.card-modal-open body {
+    overflow: hidden;
+  }
+  /* Compensate for the scrollbar removed by overflow:hidden so the page
+     doesn't shift sideways while the modal is open */
+  html.card-modal-open body {
+    padding-right: var(--card-modal-scrollbar-comp, 0px);
+  }
+  [data-modal-card] {
+    cursor: pointer;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card-modal[open],
+    .card-modal[open]::backdrop {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  const dialog = document.getElementById('card-modal') as HTMLDialogElement | null;
+  const content = dialog?.querySelector<HTMLElement>('.card-modal-content');
+  const inner = dialog?.querySelector<HTMLElement>('.card-modal-inner');
+
+  if (dialog && content && inner) {
+    const openFor = (card: HTMLElement) => {
+      const tpl = card.querySelector<HTMLTemplateElement>('template[data-card-detail]');
+      if (!tpl) return;
+      content.replaceChildren(tpl.content.cloneNode(true));
+      inner.scrollTop = 0;
+      dialog.setAttribute('aria-label', card.dataset.modalTitle || 'Details');
+      const scrollbar = window.innerWidth - document.documentElement.clientWidth;
+      document.documentElement.style.setProperty('--card-modal-scrollbar-comp', `${scrollbar}px`);
+      dialog.showModal();
+      document.documentElement.classList.add('card-modal-open');
+      content.querySelectorAll('video').forEach((v) => v.play().catch(() => {}));
+    };
+
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (target.closest('a, button')) return; // inner links keep their behavior
+      const card = target.closest<HTMLElement>('[data-modal-card]');
+      if (card) openFor(card);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      const el = document.activeElement as HTMLElement | null;
+      if (el?.hasAttribute('data-modal-card')) {
+        e.preventDefault();
+        openFor(el);
+      }
+    });
+
+    // Click on the backdrop (the dialog element itself) closes. Require the
+    // press to have started on the backdrop too, so dragging a text selection
+    // out of the panel doesn't dismiss the modal.
+    let pressedBackdrop = false;
+    dialog.addEventListener('pointerdown', (e) => {
+      pressedBackdrop = e.target === dialog;
+    });
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog && pressedBackdrop) dialog.close();
+    });
+
+    dialog.querySelector('.card-modal-close')?.addEventListener('click', () => dialog.close());
+
+    dialog.addEventListener('close', () => {
+      content.querySelectorAll('video').forEach((v) => v.pause());
+      content.replaceChildren();
+      document.documentElement.classList.remove('card-modal-open');
+    });
+  }
+</script>

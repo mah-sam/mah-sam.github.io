@@ -2,13 +2,20 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import SectionHeading from '../components/SectionHeading.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 
 const allProjects = await getCollection('projects');
-const projects = allProjects.sort((a, b) => a.data.order - b.data.order);
+const sorted = allProjects.sort((a, b) => a.data.order - b.data.order);
+// Pre-render each project's markdown body for the detail modal
+const projects = await Promise.all(
+  sorted.map(async (project) => ({
+    project,
+    Content: project.body?.trim() ? (await render(project)).Content : null,
+  }))
+);
 
 // Collect all unique tags
-const allTags = [...new Set(projects.flatMap((p) => p.data.tags))].sort();
+const allTags = [...new Set(sorted.flatMap((p) => p.data.tags))].sort();
 ---
 
 <PageLayout title="Projects" description="A collection of projects showcasing my engineering and AI work.">
@@ -67,23 +74,30 @@ const allTags = [...new Set(projects.flatMap((p) => p.data.tags))].sort();
       </a>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6" id="projects-grid">
-        {projects.map((project) => (
-          <div class="scroll-reveal project-item" data-tags={project.data.tags.join(',')}>
-            <ProjectCard
-              title={project.data.title}
-              description={project.data.description}
-              tags={project.data.tags}
-              image={project.data.image}
-              video={project.data.video}
-              date={project.data.date}
-              github={project.data.github}
-              live={project.data.live}
-              link={project.data.link}
-              linkLabel={project.data.linkLabel}
-              compact
-            />
-          </div>
-        ))}
+        {projects.map(({ project, Content }) => {
+          const props = {
+            title: project.data.title,
+            description: project.data.description,
+            tags: project.data.tags,
+            image: project.data.image,
+            video: project.data.video,
+            date: project.data.date,
+            github: project.data.github,
+            live: project.data.live,
+            link: project.data.link,
+            linkLabel: project.data.linkLabel,
+            compact: true,
+          };
+          return (
+            <div class="scroll-reveal project-item" data-tags={project.data.tags.join(',')}>
+              {Content ? (
+                <ProjectCard {...props}><Content /></ProjectCard>
+              ) : (
+                <ProjectCard {...props} />
+              )}
+            </div>
+          );
+        })}
       </div>
     </div>
   </section>

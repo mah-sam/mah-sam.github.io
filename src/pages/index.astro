@@ -6,13 +6,20 @@ import PublicationCard from '../components/PublicationCard.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import Timeline from '../components/Timeline.astro';
 import type { TimelineEntry } from '../components/Timeline.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 
 const allProjects = await getCollection('projects');
-const featuredProjects = allProjects
+const featuredSorted = allProjects
   .filter((p) => p.data.featured)
   .sort((a, b) => a.data.order - b.data.order)
   .slice(0, 3);
+// Pre-render each project's markdown body for the detail modal
+const featuredProjects = await Promise.all(
+  featuredSorted.map(async (project) => ({
+    project,
+    Content: project.body?.trim() ? (await render(project)).Content : null,
+  }))
+);
 
 let featuredPubs: any[] = [];
 try {
@@ -147,21 +154,28 @@ const careerTimeline: TimelineEntry[] = [
         />
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-        {featuredProjects.map((project) => (
-          <div class="scroll-reveal">
-            <ProjectCard
-              title={project.data.title}
-              description={project.data.description}
-              image={project.data.image}
-              video={project.data.video}
-              date={project.data.date}
-              github={project.data.github}
-              live={project.data.live}
-              link={project.data.link}
-              linkLabel={project.data.linkLabel}
-            />
-          </div>
-        ))}
+        {featuredProjects.map(({ project, Content }) => {
+          const props = {
+            title: project.data.title,
+            description: project.data.description,
+            image: project.data.image,
+            video: project.data.video,
+            date: project.data.date,
+            github: project.data.github,
+            live: project.data.live,
+            link: project.data.link,
+            linkLabel: project.data.linkLabel,
+          };
+          return (
+            <div class="scroll-reveal">
+              {Content ? (
+                <ProjectCard {...props}><Content /></ProjectCard>
+              ) : (
+                <ProjectCard {...props} />
+              )}
+            </div>
+          );
+        })}
       </div>
       <div class="mt-6 sm:mt-8 text-right scroll-reveal">
         <a
