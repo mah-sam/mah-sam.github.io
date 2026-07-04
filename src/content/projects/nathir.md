@@ -4,8 +4,8 @@ description: "AI system for classifying legal cases on Saudi Arabia's Najiz plat
 date: 2025-01-01
 tags: ["LLMs"]
 image: "/images/projects/nathir.jpg"
-link: "https://www.linkedin.com/in/mah-sam/details/projects/"
-linkLabel: "LinkedIn"
+link: "/reports/nathir-pitch-deck.pdf"
+linkLabel: "Showcase"
 featured: true
 order: 3
 ---
