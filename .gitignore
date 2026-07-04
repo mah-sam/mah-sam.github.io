@@ -21,4 +21,6 @@ Thumbs.db
 *.swp
 *.swo
 
-CV
+# Ignore everything in CV/ except the published PDF
+CV/*
+!CV/Mahmoud_Sameh_CV.pdf
