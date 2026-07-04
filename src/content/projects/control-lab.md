@@ -3,8 +3,9 @@ title: "Realigning Control System Labs: Bridging Theory with Practical Applicati
 description: "Student-driven redesign of Control Systems lab modules at IU Madinah, introducing the System Identification Toolbox, simulation-based validation, and experiments with real-world factors."
 date: 2025-04-01
 tags: ["Control Systems"]
-link: "https://www.linkedin.com/in/mah-sam/details/projects/"
-linkLabel: "LinkedIn"
+image: "/images/projects/control-lab.jpg"
+link: "/images/projects/control-letter.jpg"
+linkLabel: "Letter"
 featured: false
 order: 7
 ---
