@@ -10,47 +10,50 @@ interface Props {
   live?: string;
   link?: string;
   linkLabel?: string;
+  compact?: boolean;
 }
 
-const { title, description, tags = [], image, video, date, github, live, link, linkLabel } = Astro.props;
+const { title, description, tags = [], image, video, date, github, live, link, linkLabel, compact = false } = Astro.props;
 const year = date ? new Date(date).getFullYear() : undefined;
+const hasMedia = !!(video || image);
+const mediaClass = "w-full object-cover transition-transform duration-500 group-hover:scale-105 " + (compact ? "h-full sm:h-48" : "h-36 sm:h-48");
 ---
 
-<div class="glass-card overflow-hidden group">
-  {video ? (
-    <div class="overflow-hidden">
-      <video
-        src={video}
-        class="w-full h-36 sm:h-48 object-cover transition-transform duration-500 group-hover:scale-105"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="metadata"
-        aria-label={title}
-      ></video>
-    </div>
-  ) : image && (
-    <div class="overflow-hidden">
-      <img
-        src={image}
-        alt={title}
-        class="w-full h-36 sm:h-48 object-cover transition-transform duration-500 group-hover:scale-105"
-        loading="lazy"
-      />
+<div class:list={["glass-card overflow-hidden group", compact && "flex flex-row items-center sm:flex-col sm:items-stretch"]}>
+  {hasMedia && (
+    <div class:list={["overflow-hidden", compact ? "shrink-0 w-[10.35rem] aspect-video rounded-lg ml-3 sm:w-full sm:aspect-auto sm:rounded-none sm:ml-0" : ""]}>
+      {video ? (
+        <video
+          src={video}
+          data-card-video
+          class={mediaClass}
+          muted
+          loop
+          playsinline
+          preload="auto"
+          aria-label={title}
+        ></video>
+      ) : (
+        <img
+          src={image}
+          alt={title}
+          class={mediaClass}
+          loading="lazy"
+        />
+      )}
     </div>
   )}
-  <div class="p-4 sm:p-5">
+  <div class:list={["flex-1 min-w-0", compact ? "p-3 sm:p-5" : "p-4 sm:p-5"]}>
     <div class="flex items-start justify-between gap-3 mb-1.5 sm:mb-2">
-      <h3 class="text-base sm:text-lg font-semibold">{title}</h3>
+      <h3 class:list={[compact ? "text-sm sm:text-lg" : "text-base sm:text-lg", "font-semibold"]}>{title}</h3>
       {year && (
         <span class="shrink-0 font-mono text-[0.65rem] sm:text-xs text-[var(--color-text-muted)] mt-0.5 sm:mt-1">{year}</span>
       )}
     </div>
-    <p class="text-xs sm:text-sm text-[var(--color-text-secondary)] mb-3 sm:mb-4 leading-relaxed line-clamp-3">{description}</p>
+    <p class:list={["text-xs sm:text-sm text-[var(--color-text-secondary)] leading-relaxed", compact ? "line-clamp-2 sm:line-clamp-3 mb-2 sm:mb-4" : "line-clamp-3 mb-3 sm:mb-4"]}>{description}</p>
 
     {tags.length > 0 && (
-      <div class="flex flex-wrap gap-1 mb-3 sm:mb-4">
+      <div class:list={[compact ? "hidden sm:flex" : "flex", "flex-wrap gap-1 mb-3 sm:mb-4"]}>
         {tags.map((tag) => (
           <span class="tech-badge text-[0.6rem] sm:text-[0.65rem] px-1.5 py-0.5">{tag}</span>
         ))}
@@ -94,3 +97,32 @@ const year = date ? new Date(date).getFullYear() : undefined;
     </div>
   </div>
 </div>
+
+<script>
+  // Gate card-video playback to the viewport (files still download eagerly via preload="auto").
+  const setup = () => {
+    const videos = document.querySelectorAll<HTMLVideoElement>('video[data-card-video]');
+    if (!videos.length) return;
+
+    // Respect users who prefer reduced motion: keep videos paused on their first frame.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const v = entry.target as HTMLVideoElement;
+          if (entry.isIntersecting) {
+            v.play().catch(() => {});
+          } else {
+            v.pause();
+          }
+        }
+      },
+      { threshold: 0.25 },
+    );
+
+    videos.forEach((v) => io.observe(v));
+  };
+
+  setup();
+</script>
