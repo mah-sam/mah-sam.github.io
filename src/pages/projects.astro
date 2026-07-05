@@ -5,7 +5,15 @@ import SectionHeading from '../components/SectionHeading.astro';
 import { getCollection, render } from 'astro:content';
 
 const allProjects = await getCollection('projects');
-const sorted = allProjects.sort((a, b) => a.data.order - b.data.order);
+// Newest year first; within the same year, the custom `order` field decides
+// (falling back to newest date when orders tie).
+const sorted = allProjects.sort((a, b) => {
+  const byYear = b.data.date.getFullYear() - a.data.date.getFullYear();
+  if (byYear !== 0) return byYear;
+  const byOrder = a.data.order - b.data.order;
+  if (byOrder !== 0) return byOrder;
+  return b.data.date.getTime() - a.data.date.getTime();
+});
 // Pre-render each project's markdown body for the detail modal
 const projects = await Promise.all(
   sorted.map(async (project) => ({
@@ -86,6 +94,8 @@ const allTags = [...new Set(sorted.flatMap((p) => p.data.tags))].sort();
             live: project.data.live,
             link: project.data.link,
             linkLabel: project.data.linkLabel,
+            link2: project.data.link2,
+            link2Label: project.data.link2Label,
             compact: true,
           };
           return (

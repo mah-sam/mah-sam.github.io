@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node -e \"const fs=require('fs');fs.mkdirSync('dist/cv',{recursive:true});fs.copyFileSync('CV/Mahmoud_Sameh_CV.pdf','dist/cv/Mahmoud_Sameh_CV.pdf')\"",
     "preview": "astro preview",
     "astro": "astro"
   },

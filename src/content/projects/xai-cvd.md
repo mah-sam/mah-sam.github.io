@@ -3,8 +3,11 @@ title: "Explainable AI for Cardiovascular Disease Risk Prediction using SHAP"
 description: "Applied SHAP to a CVD risk prediction model to surface global feature importance (blood pressure, age) and patient-specific explanations, demonstrating XAI for clinical trust."
 date: 2025-03-01
 tags: ["Machine Learning", "Healthcare"]
-link: "https://www.linkedin.com/in/mah-sam/details/projects/"
-linkLabel: "LinkedIn"
+image: "/images/projects/xai-cvd.jpg"
+link: "/reports/cvd-shap-report.pdf"
+linkLabel: "Technical Report"
+link2: "https://www.kaggle.com/code/mah01sam/cardio-project"
+link2Label: "Kaggle"
 featured: false
 order: 6
 ---

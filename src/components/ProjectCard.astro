@@ -10,10 +10,12 @@ interface Props {
   live?: string;
   link?: string;
   linkLabel?: string;
+  link2?: string;
+  link2Label?: string;
   compact?: boolean;
 }
 
-const { title, description, tags = [], image, video, date, github, live, link, linkLabel, compact = false } = Astro.props;
+const { title, description, tags = [], image, video, date, github, live, link, linkLabel, link2, link2Label, compact = false } = Astro.props;
 const year = date ? new Date(date).getFullYear() : undefined;
 const hasMedia = !!(video || image);
 const hasBody = Astro.slots.has('default');
@@ -23,6 +25,7 @@ const links = [
   github && { href: github, label: 'Source', icon: 'github' },
   live && { href: live, label: 'Live', icon: 'external' },
   link && { href: link, label: linkLabel || 'Info', icon: 'external' },
+  link2 && { href: link2, label: link2Label || 'Info', icon: 'external' },
 ].filter(Boolean) as { href: string; label: string; icon: string }[];
 ---
 
@@ -35,7 +38,7 @@ const links = [
   aria-label={`View details: ${title}`}
 >
   {hasMedia && (
-    <div class:list={["overflow-hidden", compact ? "shrink-0 w-[10.35rem] aspect-video rounded-lg ml-3 sm:w-full sm:aspect-auto sm:rounded-none sm:ml-0" : ""]}>
+    <div class:list={["overflow-hidden", compact ? "shrink-0 w-[12.4rem] aspect-video rounded-lg ml-3 sm:w-full sm:aspect-auto sm:rounded-none sm:ml-0" : ""]}>
       {video ? (
         <video
           src={video}
@@ -64,7 +67,7 @@ const links = [
         <span class="shrink-0 font-mono text-[0.65rem] sm:text-xs text-[var(--color-text-muted)] mt-0.5 sm:mt-1">{year}</span>
       )}
     </div>
-    <p class:list={["text-xs sm:text-sm text-[var(--color-text-secondary)] leading-relaxed", compact ? "line-clamp-2 sm:line-clamp-3 mb-2 sm:mb-4" : "line-clamp-3 mb-3 sm:mb-4"]}>{description}</p>
+    <p class:list={["text-xs sm:text-sm text-[var(--color-text-secondary)] leading-relaxed", compact ? "hidden sm:line-clamp-3 sm:mb-4" : "line-clamp-3 mb-3 sm:mb-4"]}>{description}</p>
 
     {tags.length > 0 && (
       <div class:list={[compact ? "hidden sm:flex" : "flex", "flex-wrap gap-1 mb-3 sm:mb-4"]}>

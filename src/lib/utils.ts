@@ -18,11 +18,12 @@ export const SITE = {
   description: 'AI Researcher & Engineer. Foundation model adaptation, computer vision, and applied ML.',
   url: 'https://mahmoud-sameh.me',
   author: 'Mahmoud Sameh',
-  email: 'mahmoud.sameh0101@gmail.com',
+  email: 'hi@mahmoud-sameh.me',
   social: {
     github: 'https://github.com/mah-sam',
     linkedin: 'https://linkedin.com/in/mah-sam',
     twitter: 'https://twitter.com/mah_sam01',
+    kaggle: 'https://www.kaggle.com/mah01sam',
   },
   analytics: {
     gtmId: 'GTM-5JWKJPT',
