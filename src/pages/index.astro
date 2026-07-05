@@ -7,6 +7,41 @@ import SectionHeading from '../components/SectionHeading.astro';
 import Timeline from '../components/Timeline.astro';
 import type { TimelineEntry } from '../components/Timeline.astro';
 import { getCollection, render } from 'astro:content';
+import { SITE } from '../lib/utils';
+
+// Structured data: who I am + what this site is
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${SITE.url}/#person`,
+      name: SITE.author,
+      url: SITE.url,
+      email: `mailto:${SITE.email}`,
+      image: `${SITE.url}/images/MS.jpg`,
+      jobTitle: 'AI Researcher & Engineer',
+      alumniOf: {
+        '@type': 'CollegeOrUniversity',
+        name: 'Islamic University of Madinah',
+      },
+      sameAs: [
+        SITE.social.github,
+        SITE.social.linkedin,
+        SITE.social.twitter,
+        SITE.social.kaggle,
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE.url}/#website`,
+      url: SITE.url,
+      name: SITE.title,
+      description: SITE.description,
+      publisher: { '@id': `${SITE.url}/#person` },
+    },
+  ],
+};
 
 const allProjects = await getCollection('projects');
 const featuredSorted = allProjects
@@ -86,6 +121,7 @@ const careerTimeline: TimelineEntry[] = [
 ---
 
 <PageLayout>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(structuredData)} />
   <Hero />
 
   <!-- Featured Publications -->

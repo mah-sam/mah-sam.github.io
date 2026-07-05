@@ -3,6 +3,7 @@ import PageLayout from '../layouts/PageLayout.astro';
 import PublicationCard from '../components/PublicationCard.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import { getCollection } from 'astro:content';
+import { SITE } from '../lib/utils';
 
 let publications: any[] = [];
 try {
@@ -11,9 +12,29 @@ try {
 } catch {
   // No publications yet
 }
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': publications.map((pub) => ({
+    '@type': 'ScholarlyArticle',
+    headline: pub.data.title,
+    datePublished: pub.data.date.toISOString().split('T')[0],
+    isPartOf: { '@type': 'Periodical', name: pub.data.venue },
+    author: pub.data.authors.map((name: string) => ({ '@type': 'Person', name })),
+    ...(pub.data.abstract && { abstract: pub.data.abstract }),
+    ...(pub.data.tags.length > 0 && { keywords: pub.data.tags.join(', ') }),
+    ...(pub.data.doi && {
+      identifier: pub.data.doi,
+      sameAs: `https://doi.org/${pub.data.doi}`,
+    }),
+  })),
+};
 ---
 
 <PageLayout title="Publications" description="Academic publications and research work.">
+  {publications.length > 0 && (
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(structuredData)} />
+  )}
   <section class="pt-24 sm:pt-32 pb-12 sm:pb-20 px-4 sm:px-6">
     <div class="max-w-4xl mx-auto">
       <div class="scroll-reveal">
