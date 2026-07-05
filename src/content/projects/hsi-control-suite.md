@@ -2,7 +2,7 @@
 title: "HSI Control Suite: GUI for DIY Hyperspectral Imaging"
 description: "Open-source PyQt6 desktop app for end-to-end operation of DIY push-broom hyperspectral imaging systems. It unifies camera control, stepper-motor synchronization, data acquisition, spectral calibration, and hyperspectral cube assembly in one interface. Published in SoftwareX."
 date: 2025-01-01
-tags: ["Python", "Hyperspectral Imaging"]
+tags: ["Image Processing", "Control & Electrical Engineering", "Software"]
 video: "/videos/hsi-control-suite.mp4"
 github: "https://github.com/mah-sam/benchtop-hsi-control"
 featured: false

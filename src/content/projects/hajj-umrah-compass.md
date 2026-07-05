@@ -2,7 +2,7 @@
 title: "Hajj & Umrah Help Compass"
 description: "A GPS-based navigation compass prototype that helps Hajj and Umrah pilgrims find their way in crowded areas and avoid getting lost, guiding them toward a chosen destination such as their camp. Led as a four-person team project for the Creativity in Engineering Design course."
 date: 2022-11-01
-tags: ["Embedded Systems", "Hardware"]
+tags: ["Control & Electrical Engineering", "Embedded Systems"]
 video: "/videos/compass.mp4"
 link: "/reports/hajj-umrah-compass-report.pdf"
 linkLabel: "Technical Report"

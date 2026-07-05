@@ -2,7 +2,7 @@
 title: "Zotero AI Note Taker"
 description: "Desktop app that generates structured, AI-powered summary notes for research papers in your Zotero library. A PyQt6 GUI browses Zotero collections and sends papers to Google Gemini, then saves formatted notes with BibLaTeX citations back into Zotero."
 date: 2025-01-01
-tags: ["Python", "LLMs"]
+tags: ["AI & Deep Learning", "Software"]
 image: "/images/projects/zotero-ai-note-taker.png"
 github: "https://github.com/mah-sam/zotero-ai-note-taker"
 featured: false

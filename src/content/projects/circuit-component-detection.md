@@ -2,7 +2,7 @@
 title: "Circuit Component Detection with YOLOv11"
 description: "Fine-tuned YOLOv11 detector that identifies and classifies electrical components (resistors, capacitors, sources) in hand-drawn circuit images. Trained on the CGHD handwritten schematics dataset to 0.93 mAP50, it forms the detection front-end of the CircuitVision pipeline."
 date: 2024-12-01
-tags: ["Computer Vision", "Deep Learning", "Python"]
+tags: ["Computer Vision", "AI & Deep Learning"]
 video: "/videos/component-detection.mp4"
 github: "https://github.com/JKc66/CircuitVision/"
 featured: false

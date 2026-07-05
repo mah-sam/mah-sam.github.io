@@ -2,7 +2,7 @@
 title: "AI for Housing Defaulter Prediction & Critical Case Detection"
 description: "Dual-solution system for a national datathon: XGBoost regressor for regional defaulter forecasting and a Restricted Boltzmann Machine for anomaly detection of high-risk cases."
 date: 2024-11-01
-tags: ["Machine Learning", "Data Science"]
+tags: ["AI & Deep Learning"]
 link: "https://www.linkedin.com/in/mah-sam/details/projects/"
 linkLabel: "LinkedIn"
 featured: false

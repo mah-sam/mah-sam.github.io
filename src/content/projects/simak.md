@@ -1,8 +1,8 @@
 ---
-title: "Simak: Agentic Arabic-First Document Extraction Platform"
+title: "Simak: Agentic Arabic-First Document Extraction"
 description: "An agentic, Arabic-first document-understanding platform for the Saudi market. Non-technical users describe the document they need to extract, an AI agent interviews them, proposes a JSON schema, and deploys a structured-output LLM extractor behind an API key."
 date: 2026-05-01
-tags: ["LLMs", "Agents"]
+tags: ["AI & Deep Learning", "Full Stack"]
 live: "https://simak.ai"
 video: "/videos/simak-desktop.mp4"
 featured: true

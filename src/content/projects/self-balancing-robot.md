@@ -2,7 +2,7 @@
 title: "Self-Balancing Robot (Inverted Pendulum) via Deep Reinforcement Learning"
 description: "Two-wheeled self-balancing robot progressing from PID and MPC to a DQN agent. Physical prototype built and modeled in Simscape for simulation-to-reality transfer validation."
 date: 2024-06-01
-tags: ["Control Systems", "Robotics", "Reinforcement Learning"]
+tags: ["Control & Electrical Engineering", "AI & Deep Learning", "Embedded Systems"]
 image: "/images/projects/self-balancing-robot.jpg"
 link: "https://www.linkedin.com/in/mah-sam/details/projects/"
 linkLabel: "LinkedIn"
