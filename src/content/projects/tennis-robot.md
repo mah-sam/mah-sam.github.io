@@ -2,7 +2,7 @@
 title: "Autonomous Robot for WRO RoboSport 2023"
 description: "Autonomous two-wheeled robot built for the WRO RoboSport tennis competition. A Raspberry Pi 4 drives DC motors and a rack-and-pinion striker, while a Pi Camera detects the tennis ball in real time by color and sphericity, all controlled in Python."
 date: 2023-12-01
-tags: ["Computer Vision", "Control & Electrical Engineering", "Embedded Systems"]
+tags: ["Image Processing", "Computer Vision", "Control & Electrical Engineering", "Embedded Systems"]
 video: "/videos/tennis-robot.mp4"
 link: "/reports/tennis-robot-report.pdf"
 linkLabel: "Technical Report"
