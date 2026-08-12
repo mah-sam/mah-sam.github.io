@@ -39,6 +39,39 @@ All future changes MUST comply with these principles:
 - Do not hardcode content in page files — always use Content Collections
 - Do not use colors outside the defined palette without updating the theme tokens
 
+## Local-Only References
+
+These files live in the repo root but are git-ignored. They are private working
+notes, never published to the site and never committed.
+
+| File | Read it when |
+|------|--------------|
+| `UPWORK_PLAYBOOK.md` | **Any** Upwork-related task: writing or reviewing a cover letter / proposal, profile title / overview / portfolio copy, deciding whether a job is worth connects, pricing, rate negotiation, or first-client strategy. Read it BEFORE writing anything, not after. It contains the platform mechanics (the ~148-character preview, proposal ranking, the first-13 cutoff), the hard bans, opener families, templates, and pre-submit checklists. |
+
+Rules for these files:
+- Never commit them or reference their contents in site content, commit
+  messages, or anything user-facing.
+- If the file is missing, say so rather than improvising from memory.
+
+### MANDATORY: Humanizer pass on all Upwork copy
+
+**Every piece of text written for Upwork MUST be run through the Humanizer
+skill before delivery.** No exceptions: cover letters, proposals, profile
+titles and overviews, portfolio blurbs, interview replies, follow-up messages.
+
+**Reference:** https://github.com/blader/humanizer/blob/main/SKILL.md
+(Humanizer: Remove AI Writing Patterns, based on Wikipedia's "Signs of AI
+writing". 33 patterns across content, language, style, and communication.
+Cuts em dashes entirely, kills AI vocabulary like "pivotal" / "landscape" /
+"delve" / "leverage" / "seamless", strips emojis, excessive boldface, title
+case headings, and chatbot artifacts. Core principle: preserve the
+information, not the shape.)
+
+This is not optional polish. Upwork clients actively hunt AI tells and bin
+roughly half the proposal pile on style alone, so a proposal that fails this
+pass is a wasted connect. Order of operations: draft, humanizer pass, then the
+pre-submit checklist in `UPWORK_PLAYBOOK.md` Section 8.
+
 ## Architecture
 
 ```

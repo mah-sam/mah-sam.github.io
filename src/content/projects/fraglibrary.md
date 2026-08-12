@@ -5,7 +5,7 @@ date: 2025-02-01
 tags: ["AI & Deep Learning", "Full Stack"]
 image: "/images/projects/fraglibrary-desktop.png"
 live: "https://fraglibrary.com"
-featured: true
+featured: false
 order: 1
 ---
 

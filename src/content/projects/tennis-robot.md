@@ -6,8 +6,8 @@ tags: ["Image Processing", "Computer Vision", "Control & Electrical Engineering"
 video: "/videos/tennis-robot.mp4"
 link: "/reports/tennis-robot-report.pdf"
 linkLabel: "Technical Report"
-featured: false
-order: 5
+featured: true
+order: 1
 ---
 
 A three-person team project (with Albara Abbad and Jawad Khan) for the Microprocessors course at the Islamic University of Madinah, targeting the WRO RoboSport tennis competition. We designed an autonomous two-wheeled mobile robot capable of finding and striking a tennis ball without human control.

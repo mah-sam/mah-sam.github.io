@@ -24,3 +24,6 @@ Thumbs.db
 # Ignore everything in CV/ except the published PDF
 CV/*
 !CV/Mahmoud_Sameh_CV.pdf
+
+# Private working notes (never published, never committed)
+UPWORK_PLAYBOOK.md
