@@ -44,10 +44,12 @@ const structuredData = {
 };
 
 const allProjects = await getCollection('projects');
+// `order` decides which three make the cut; the display itself is newest-first
 const featuredSorted = allProjects
   .filter((p) => p.data.featured)
   .sort((a, b) => a.data.order - b.data.order)
-  .slice(0, 3);
+  .slice(0, 3)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 // Pre-render each project's markdown body for the detail modal
 const featuredProjects = await Promise.all(
   featuredSorted.map(async (project) => ({
