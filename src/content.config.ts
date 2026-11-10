@@ -21,6 +21,8 @@ const projects = defineCollection({
     date: z.coerce.date(),
     tags: z.array(z.string()).default([]),
     image: z.string().optional(),
+    // CSS object-position for the card's cropped image, e.g. "left" to keep text on the left in view
+    imagePosition: z.string().optional(),
     video: z.string().optional(),
     github: z.string().optional(),
     live: z.string().optional(),

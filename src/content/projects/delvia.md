@@ -4,6 +4,7 @@ description: "An AI health app that reads lab reports, remembers a person's symp
 date: 2026-09-01
 tags: ["AI & Deep Learning", "Full Stack"]
 image: "/images/projects/delvia-feature.png"
+imagePosition: "left"
 live: "https://delvia.health"
 link: "https://play.google.com/store/apps/details?id=ai.simak.delvia"
 linkLabel: "Google Play"

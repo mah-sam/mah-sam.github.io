@@ -4,6 +4,7 @@ interface Props {
   description: string;
   tags?: string[];
   image?: string;
+  imagePosition?: string;
   video?: string;
   date?: Date;
   github?: string;
@@ -18,7 +19,7 @@ interface Props {
 import CardLinks from './CardLinks.astro';
 import ProjectPlaceholder from './ProjectPlaceholder.astro';
 
-const { title, description, tags = [], image, video, date, github, live, link, linkLabel, link2, link2Label, compact = false } = Astro.props;
+const { title, description, tags = [], image, imagePosition, video, date, github, live, link, linkLabel, link2, link2Label, compact = false } = Astro.props;
 const year = date ? new Date(date).getFullYear() : undefined;
 const hasMedia = !!(video || image);
 const hasBody = Astro.slots.has('default');
@@ -60,6 +61,7 @@ const breakout = compact && links.length >= 2;
         src={image}
         alt={title}
         class={mediaClass}
+        style={imagePosition && `object-position: ${imagePosition}`}
         loading="lazy"
       />
     ) : (
