@@ -1,0 +1,18 @@
+---
+// /cv opens the CV straight away. The script runs in <head>, before anything is
+// drawn, so the page itself is never seen; the meta refresh covers browsers without JS.
+// The build copies the PDF from CV/ to dist/cv/.
+const cv = '/cv/Mahmoud_Sameh_CV.pdf';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <script is:inline>location.replace('/cv/Mahmoud_Sameh_CV.pdf');</script>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content={`0;url=${cv}`} />
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href={new URL(cv, Astro.site)} />
+    <title>Mahmoud Sameh CV</title>
+  </head>
+  <body></body>
+</html>
