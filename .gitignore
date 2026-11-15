@@ -21,9 +21,13 @@ Thumbs.db
 *.swp
 *.swo
 
-# Ignore everything in CV/ except the published PDF
+# Ignore everything in CV/ except the published PDFs (listed in src/cv-links.mjs)
 CV/*
 !CV/Mahmoud_Sameh_CV.pdf
+!CV/Mahmoud_Sameh_CV_AIS.pdf
+!CV/Mahmoud_Sameh_CV_AIS_AR.pdf
+!CV/Mahmoud_Sameh_CV_EE.pdf
+!CV/Mahmoud_Sameh_CV_EE_AR.pdf
 
 # Private working notes (never published, never committed)
 UPWORK_PLAYBOOK.md
