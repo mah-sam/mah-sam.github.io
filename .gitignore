@@ -24,6 +24,7 @@ Thumbs.db
 # Ignore everything in CV/ except the published PDFs (listed in src/cv-links.mjs)
 CV/*
 !CV/Mahmoud_Sameh_CV.pdf
+!CV/Mahmoud_Sameh_CV_AI.pdf
 !CV/Mahmoud_Sameh_CV_AIS.pdf
 !CV/Mahmoud_Sameh_CV_AIS_AR.pdf
 !CV/Mahmoud_Sameh_CV_EE.pdf

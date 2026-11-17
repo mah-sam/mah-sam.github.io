@@ -7,6 +7,8 @@ export const cvs = [
   { slug: 'fai', source: 'Mahmoud_Sameh_CV.pdf', file: 'Mahmoud_Sameh_CV.pdf', lang: 'en' },
   // The old name for /fai, kept so links already sent out still open
   { slug: 'cv', source: 'Mahmoud_Sameh_CV.pdf', file: 'Mahmoud_Sameh_CV.pdf', lang: 'en' },
+  // AI and research, built from Mahmoud_Sameh_CV_AI.tex
+  { slug: 'ai', source: 'Mahmoud_Sameh_CV_AI.pdf', file: 'Mahmoud_Sameh_CV.pdf', lang: 'en' },
   // AI and full stack
   { slug: 'ais', source: 'Mahmoud_Sameh_CV_AIS.pdf', file: 'Mahmoud_Sameh_CV.pdf', lang: 'en' },
   { slug: 'aisar', source: 'Mahmoud_Sameh_CV_AIS_AR.pdf', file: 'Mahmoud_Sameh_CV_AR.pdf', lang: 'ar' },
